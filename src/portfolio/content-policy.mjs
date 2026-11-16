@@ -141,6 +141,7 @@ export function publishedPortfolio(config, sections = HOME_SECTIONS) {
       returnDescription: "",
       image: "",
     },
+    store: config.store ?? { locations: [] },
   };
 }
 

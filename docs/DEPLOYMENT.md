@@ -28,6 +28,55 @@ personal site needs nothing more. If you also changed shared code, run
 [COMMANDS.md](COMMANDS.md). Do not deploy from a working tree whose visual
 regression is unexplained.
 
+## Choosing a host
+
+A profile can list several hosts side by side in a `deployment` block and pick
+one as the default; switching is one word, and each host keeps its own
+settings and address:
+
+```json
+{
+  "deployment": {
+    "provider": "vercel",
+    "providers": {
+      "vercel": { "project": "example", "origin": "https://example.vercel.app" },
+      "cloudflare": {
+        "accountId": "0123456789abcdef0123456789abcdef",
+        "worker": "example",
+        "origin": "https://example.someone.workers.dev"
+      },
+      "firebase": { "projectId": "example-site", "origin": "https://example-site.web.app" }
+    }
+  }
+}
+```
+
+```bash
+npm run deploy                         # build for the default provider
+npm run deploy -- cloudflare           # build for another listed provider
+npm run deploy -- cloudflare --apply   # build, then publish
+```
+
+Without `--apply` nothing leaves the machine. A build for a host uses that
+host's `origin` (else `site.origin`) for canonical links, the sitemap, social
+cards and JSON-LD, so every copy of the site points at itself. Credentials
+never live in the repository: each provider's CLI keeps its own sign-in
+(`wrangler login`, `vercel login`, `firebase login`), and CI passes
+`CLOUDFLARE_API_TOKEN`, `VERCEL_TOKEN` or `FIREBASE_TOKEN` instead.
+
+| Host | How the site runs | Free plan notes |
+| --- | --- | --- |
+| Vercel | Native Next.js; pushes deploy through the Git integration | About 100 deployments a day |
+| Cloudflare | A Worker through the OpenNext adapter (`@opennextjs/cloudflare`); pages are prerendered and served from the Worker's assets, `/api/weather` runs in the Worker, images are optimised by the `IMAGES` binding | 100,000 requests a day, 10 ms CPU per request; 5,000 image transformations a month |
+| Firebase | Static export (`out/`) on Hosting, with the same security headers; images are served as published, and the browser fetches the weather itself | Hosting on the Spark plan; server rendering would need the paid Blaze plan |
+
+`scripts/deploy.mjs` writes each host's configuration from the profile at
+deploy time (`wrangler.generated.json`, `firebase.generated.json`), so nothing
+host-specific is committed besides `open-next.config.ts`. Build the Cloudflare
+adapter on Linux or macOS (CI or a Linux machine): it does not support
+Windows. Adding a host is one entry in the schema's `deployment.providers`,
+one step in `scripts/deploy.mjs` and a row here.
+
 ## Vercel
 
 Create a project from the repository and use the standard Next.js preset. No FolioWeave-specific build adapter is required.
@@ -84,7 +133,9 @@ build, because it replaces `portfolio.json`. Demo projects build `main` and
 
 ## Other Next.js hosts
 
-Use the provider's current Next.js integration. The application uses App Router routes and Route Handlers, so the host must support the project's Next.js runtime rather than only static HTML export.
+Any host with a current Next.js integration works the way Vercel does. A host
+that serves only files can take the static export the Firebase step builds
+(`FOLIO_HOSTING=firebase npm run build` writes `out/`).
 
 ## Post-deploy checks
 
