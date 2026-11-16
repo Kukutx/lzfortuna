@@ -1,5 +1,5 @@
 // Generated configuration only; never import view implementations here.
 import 'server-only';
-export const templateId = "classic";
-export const templateOptions = {};
-export const templateCategory: "personal" | "store" = "personal";
+export const templateId = "bottega";
+export const templateOptions = {"catalogPath":"prodotti","servicesPath":"sartoria","separateGroup":"altri","quickActions":[{"title":"Avete questo articolo?","detail":"Chiedi se un prodotto è disponibile, anche con una foto.","message":"Buongiorno, vorrei sapere se avete disponibile: "},{"title":"Quanto costa sistemare un capo?","detail":"Descrivi il lavoro o manda una foto del capo.","message":"Buongiorno, vorrei sapere il prezzo per sistemare questo capo: "},{"title":"Vorrei passare in negozio","detail":"Fissa una prova, un ritiro o una consegna.","message":"Buongiorno, vorrei passare in negozio per "}],"steps":[{"title":"Portaci il capo","detail":"Passa in negozio, oppure mandaci prima una foto su WhatsApp e raccontaci cosa vuoi sistemare."},{"title":"Ti diciamo prezzo e tempi","detail":"Guardiamo il capo insieme e ti confermiamo il prezzo prima di iniziare il lavoro."},{"title":"Ritiri il capo sistemato","detail":"Ti avvisiamo quando è pronto: passi in negozio e lo ritiri."}],"labels":{"storesIntro":"Due negozi di famiglia, aperti dal lunedì al sabato. Un solo numero per tutti e due: 366 892 7486.","contactText":"Hai una domanda, cerchi un prodotto o vuoi passare in negozio? Scrivici su WhatsApp o chiamaci: ti risponde direttamente la nostra famiglia."}};
+export const templateCategory: "personal" | "store" = "store";

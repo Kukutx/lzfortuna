@@ -2,582 +2,490 @@
   "$schema": "./portfolio.schema.json",
   "site": {
     "identity": {
-      "name": "Your Name",
-      "firstName": "You",
-      "initials": "YN",
-      "role": "Product Designer",
-      "company": "Example Studio",
-      "locale": "en-US"
+      "name": "LZ FORTUNA",
+      "firstName": "LZ Fortuna",
+      "initials": "LZ",
+      "role": "Emporio di quartiere e sartoria",
+      "company": "",
+      "locale": "it-IT"
     },
-    "origin": "https://example.com",
+    "origin": "https://lzfortuna.web.app",
     "themeColor": "#ffffff",
     "copyrightYear": 2026,
-    "contact": {
-      "email": "hello@example.com",
-      "helloSubject": "Hello!",
-      "hiSubject": "Hi"
-    },
-    "socialLinks": [
-      {
-        "label": "Twitter",
-        "icon": "twitter",
-        "href": "https://example.com/#twitter",
-        "brand": "#000000"
-      },
-      {
-        "label": "LinkedIn",
-        "icon": "linkedin",
-        "href": "https://example.com/#linkedin",
-        "brand": "#0A66C2"
-      },
-      {
-        "label": "Instagram",
-        "icon": "instagram",
-        "href": "https://example.com/#instagram",
-        "brand": "#E1306C"
-      },
-      {
-        "label": "Email",
-        "icon": "email",
-        "href": "mailto:hello@example.com",
-        "brand": "#EA4335"
-      }
-    ],
-    "navigation": [
-      {
-        "label": "About",
-        "href": "#about",
-        "sectionId": "about"
-      },
-      {
-        "label": "Work",
-        "href": "#work",
-        "sectionId": "work"
-      },
-      {
-        "label": "Photography",
-        "href": "#photography",
-        "sectionId": "photography"
-      },
-      {
-        "label": "Blogs",
-        "href": "/blogs",
-        "sectionId": null,
-        "newTab": true,
-        "demoOnly": true
-      }
-    ],
+    "socialLinks": [],
+    "navigation": [],
     "location": {
-      "city": "San Francisco",
-      "country": "United States",
-      "timeZone": "America/Los_Angeles",
-      "timeZoneLabel": "PT",
-      "latitude": 37.7749,
-      "longitude": -122.4194
-    },
-    "resume": {
-      "image": "/assets/demo/example-resume.svg",
-      "pdf": "/assets/demo/example-resume.pdf",
-      "downloadName": "Example-Resume.pdf"
+      "city": "Cologno Monzese",
+      "country": "Italia",
+      "timeZone": "Europe/Rome",
+      "timeZoneLabel": "CET",
+      "latitude": 45.5286,
+      "longitude": 9.2783
     },
     "assets": {
-      "socialPreview": "/ogportfolio-logo.webp",
-      "icon": "/favicon.ico",
-      "appleTouchIcon": "/apple-touch-icon.png"
+      "socialPreview": "/portfolio/brand/og-image.png",
+      "icon": "/portfolio/brand/icon.png",
+      "appleTouchIcon": "/portfolio/brand/apple-touch-icon.png"
     }
   },
   "features": {
-    "weather": true,
-    "about": true,
-    "work": true,
-    "photography": true,
-    "resume": true,
-    "demoRoutes": true
+    "weather": false,
+    "about": false,
+    "work": false,
+    "photography": false,
+    "resume": false,
+    "demoRoutes": false
   },
   "hero": {
     "greetings": [
-      "Hello",
-      "Namaste",
-      "Bonjour",
-      "Hola",
-      "Ciao",
-      "Olá",
-      "Hallo",
-      "Guten Tag",
-      "Salaam",
-      "Konnichiwa"
+      "Benvenuti"
     ],
     "portraits": [
-      "/assets/demo/photo-01.svg",
-      "/assets/demo/photo-02.svg",
-      "/assets/demo/photo-03.svg",
-      "/assets/demo/photo-04.svg"
+      "/portfolio/images/sartoria.jpg"
     ],
     "roleLine": [
       {
-        "text": "Product Designer at "
-      },
-      {
-        "brand": {
-          "name": "Example Studio",
-          "icon": "/assets/demo/logo-placeholder.svg"
-        }
+        "text": "Sartoria e servizi per il tuo stile"
       }
     ],
     "summary": [
       {
-        "text": "Example portfolio based in San Francisco, demonstrating product storytelling with "
-      },
-      {
-        "brand": {
-          "name": "District by Zomato",
-          "icon": "/assets/district-icon-fad26ad7.png"
-        }
-      },
-      {
-        "text": " and side projects such as "
-      },
-      {
-        "brand": {
-          "name": "Brink",
-          "icon": "/brink/logo.png"
-        }
-      },
-      {
-        "text": ", a podcast player."
+        "text": "Il tuo emporio di quartiere: abbigliamento, articoli per la casa e riparazioni sartoriali. Scrivici o chiamaci, ti rispondiamo noi."
       }
     ]
   },
   "about": {
-    "timeline": [
-      {
-        "year": "2020",
-        "title": "Started design",
-        "desc": "Example milestone — replace this with the moment your own story begins.",
-        "current": false
-      },
-      {
-        "year": "2022",
-        "title": "Built first product",
-        "desc": "Example milestone for a project, role, or turning point in your work.",
-        "current": false
-      },
-      {
-        "year": "2024",
-        "title": "Expanded the craft",
-        "desc": "Example milestone showing how your skills or responsibilities evolved.",
-        "current": false
-      },
-      {
-        "year": "2026",
-        "title": "Current chapter",
-        "desc": "Replace this with what you are focused on today.",
-        "current": true
-      }
-    ],
-    "story": [
-      [
-        {
-          "tone": "muted",
-          "text": "This is example copy for the reusable FolioWeave template. "
-        },
-        {
-          "tone": "strong",
-          "text": "Use this opening paragraph to explain what first drew you toward design and making things. "
-        },
-        {
-          "tone": "muted",
-          "text": "Keep the story simple and specific rather than dramatic. "
-        },
-        {
-          "tone": "strong",
-          "text": "Call out the idea that eventually became your focus over time: "
-        },
-        {
-          "tone": "highlight",
-          "text": "product design"
-        },
-        {
-          "tone": "strong",
-          "text": "."
-        }
-      ],
-      [
-        {
-          "tone": "muted",
-          "text": "Before the work itself, talk about the interests that shaped your eye for detail. Maybe that was photography, hardware, illustration, music, or something completely different. "
-        },
-        {
-          "tone": "strong",
-          "text": "The point is not to manufacture an origin story; it is to show the thread between what you notice, what you enjoy making, and how that perspective shows up in your work."
-        }
-      ],
-      [
-        {
-          "tone": "muted",
-          "text": "Use the final paragraph to connect those interests to the way you work now. "
-        },
-        {
-          "tone": "strong",
-          "text": "Explain what you like solving, how you balance craft with constraints, and what kind of products or experiences you want to keep building."
-        }
-      ]
-    ],
-    "galleryImages": [
-      {
-        "src": "/assets/demo/photo-02.svg",
-        "alt": "Photo placeholder 1"
-      },
-      {
-        "src": "/assets/demo/photo-01.svg",
-        "alt": "Photo placeholder 2"
-      },
-      {
-        "src": "/assets/demo/photo-03.svg",
-        "alt": "Photo placeholder 3"
-      },
-      {
-        "src": "/assets/demo/photo-wide.svg",
-        "alt": "Photo placeholder 4"
-      }
-    ]
+    "timeline": [],
+    "story": [],
+    "galleryImages": []
   },
-  "projects": [
-    {
-      "id": "district",
-      "enabled": true,
-      "name": "District by Zomato",
-      "date": "Jan 2025 — Apr 2026",
-      "description": "I design for the Movies vertical at District by Zomato, facilitating over 75 million ticket sales. My focus is on creating scalable, easy-to-use flows that balance business goals with a great user experience.",
-      "icon": "/assets/district-icon-fad26ad7.png",
-      "badge": {
-        "text": "Best App of 2025 - Google Play",
-        "tone": "gold"
-      },
-      "actions": [
-        {
-          "label": "View Case Study",
-          "href": "/district",
-          "icon": "arrow"
-        }
-      ],
-      "story": {
-        "title": "Story time",
-        "image": "/assets/demo/project-placeholder.svg",
-        "imageAlt": "Project image placeholder",
-        "body": "A designer shared a project note with a product leader, and they replied! That conversation became an unexpected opportunity to keep working on the product, which later turned into a longer collaboration. Sometimes, reaching out with a thoughtful message can open doors you never expected."
-      },
-      "mobileTreatment": "standard",
-      "media": {
-        "kind": "image",
-        "image": {
-          "src": "/media/5c0589_7a30aeef55604850b2cb9994e87dd196~mv2.webp",
-          "mobile": "/media/5c0589_0a1ded0ebf574f41a427c109a3ab6ca8~mv2.webp",
-          "alt": "District by Zomato"
-        }
-      }
-    },
-    {
-      "id": "brink",
-      "enabled": true,
-      "name": "Brink",
-      "date": "Feb 2026 — Present",
-      "description": "A podcast player and news app I designed and built solo — discovery, playback, and headlines all in one place. Features include trending podcast recommendations, timestamped bookmarks, and a walking mode. Built with a modern Liquid Glass design for iOS.",
-      "icon": "/brink/logo.png",
-      "badge": {
-        "text": "Featured on 9to5Mac",
-        "tone": "gold",
-        "href": "https://9to5mac.com/2026/06/20/indie-app-spotlight-brink-brings-a-feature-rich-experience-to-iphone-podcast-listening/"
-      },
-      "actions": [
-        {
-          "label": "View in App Store",
-          "href": "https://apps.apple.com/in/app/brink-podcasts-and-news/id6760338948",
-          "icon": "arrow"
-        }
-      ],
-      "mobileTreatment": "featured",
-      "media": {
-        "kind": "image",
-        "image": {
-          "src": "/media/brink-work-desktop.jpg",
-          "mobile": "/media/brink-work-mobile.jpg",
-          "alt": "Brink podcast discovery screens"
-        }
-      }
-    },
-    {
-      "id": "clipt",
-      "enabled": true,
-      "name": "Clipt",
-      "date": "Jan 2026",
-      "description": "I designed and built Clipt to solve a personal pain point: the lack of a native, synced clipboard history on iOS. Built with SwiftUI and SwiftData, it features a custom keyboard extension for instant access to your clips, seamless iCloud synchronization, and a polished, native feel that fits perfectly into the Apple ecosystem.",
-      "icon": "/media/5c0589_4015772c87e6491eb8881e3764409267~mv2.webp",
-      "badge": {
-        "text": "#1 Paid App in India - App Store",
-        "tone": "blue"
-      },
-      "actions": [
-        {
-          "label": "View Product",
-          "href": "/clipt",
-          "icon": "arrow"
-        },
-        {
-          "label": "Read the Story",
-          "href": "/blogs/clipt",
-          "icon": "book",
-          "tone": "accent"
-        }
-      ],
-      "mobileTreatment": "featured",
-      "media": {
-        "kind": "image",
-        "image": {
-          "src": "/media/5c0589_f2650350f5424f63986ad52a542e14b7~mv2.webp",
-          "mobile": "/media/5c0589_4397853e33df48cbae9a1f8b56d8417f~mv2.webp",
-          "alt": "Clipt - Clipboard History"
-        }
-      }
-    },
-    {
-      "id": "habee",
-      "enabled": true,
-      "name": "Habee",
-      "date": "Jan 2026",
-      "description": "A minimal habit tracker built with SwiftUI — simple, focused, and designed to help you build better routines without overwhelming you with features.",
-      "actions": [
-        {
-          "label": "View in App Store",
-          "href": "https://apps.apple.com/in/app/habee-habit-tracker/id6757213438",
-          "icon": "arrow"
-        }
-      ],
-      "mobileTreatment": "featured",
-      "media": {
-        "kind": "image",
-        "image": {
-          "src": "/media/5c0589_8035037444ae49d2bb661f3a5c001786~mv2.webp",
-          "mobile": "/media/5c0589_e510a0a265744c628a6f5be98d165764~mv2.webp",
-          "alt": "Habee - Habit Tracker"
-        }
-      }
-    },
-    {
-      "id": "og-walls",
-      "enabled": true,
-      "name": "OG Walls",
-      "date": "Aug 2025",
-      "description": "OG Walls is an Android app I built that offers a free collection of high-quality wallpapers. All the photos in the app are original and were captured by me. The app is a showcase of my personal photography portfolio, giving users a unique and refreshing alternative to generic stock photos.",
-      "actions": [
-        {
-          "label": "View in Play Store",
-          "href": "https://play.google.com/store/apps/details?id=com.ogwalls.app",
-          "icon": "arrow"
-        }
-      ],
-      "mobileTreatment": "standard",
-      "media": {
-        "kind": "image",
-        "image": {
-          "src": "/media/5c0589_b6de3c913beb49b386b9792f9f4ade48~mv2.webp",
-          "mobile": "/media/5c0589_4ea5c5899e764cfc9e88a6e43827f725~mv2.webp",
-          "alt": "OG Walls"
-        }
-      }
-    },
-    {
-      "id": "notchshelf",
-      "enabled": true,
-      "name": "NotchShelf",
-      "date": "Jan 2026",
-      "description": "I turned the MacBook Notch into a functional workspace! NotchShelf transforms that \"dead space\" into a dynamic utility belt with a Quick Shelf for files, a Screenshot Magnet, and a Quick Mirror. Built with SwiftUI as my first macOS app, it reached #1 Paid App in India on the Mac App Store.",
-      "icon": "/notchshelf-logo.webp",
-      "badge": {
-        "text": "#1 Paid App in India - App Store",
-        "tone": "blue",
-        "previewImage": "/media/5c0589_43f2662bccd344f6b5d833dc0ec16ea0~mv2.webp",
-        "previewMaxWidth": 300
-      },
-      "actions": [
-        {
-          "label": "View in App Store",
-          "href": "https://apps.apple.com/in/app/notchshelf-folders-in-notch/id6757535797?mt=12",
-          "icon": "arrow"
-        }
-      ],
-      "mobileTreatment": "standard",
-      "media": {
-        "kind": "carousel",
-        "images": [
-          {
-            "src": "/media/5c0589_6ac998ac67574efe8de1ce8e005273f0~mv2.webp",
-            "alt": "NotchShelf screenshot 1"
-          },
-          {
-            "src": "/media/5c0589_ea6630f53b474533bae973ba423892b5~mv2.webp",
-            "alt": "NotchShelf screenshot 2"
-          },
-          {
-            "src": "/media/5c0589_6cdb4dc09a8c4b0c951116889a6e4856~mv2.webp",
-            "alt": "NotchShelf screenshot 3"
-          },
-          {
-            "src": "/media/5c0589_543c0982737648b7ba00cf8f05a23000~mv2.webp",
-            "alt": "NotchShelf screenshot 4"
-          },
-          {
-            "src": "/media/5c0589_4e9f8672707a43daa7b64d6d2cfe31b9~mv2.webp",
-            "alt": "NotchShelf screenshot 5"
-          }
-        ]
-      }
-    }
-  ],
-  "photography": {
-    "intro": "And hey, I love photography.",
-    "images": [
-      {
-        "src": "/media/5c0589_73583c6e0d78476c97acc3a7ea179510~mv2.webp",
-        "alt": "Portfolio photograph 1"
-      },
-      {
-        "src": "/media/5c0589_efb61fd0050843a4b8cdec62493de85e~mv2.webp",
-        "alt": "Portfolio photograph 2"
-      },
-      {
-        "src": "/media/5c0589_e5a8942da56147d49a06a929fc312864~mv2.webp",
-        "alt": "Portfolio photograph 3"
-      },
-      {
-        "src": "/media/5c0589_7ab49e27a66b414f87aac76285523413~mv2.webp",
-        "alt": "Portfolio photograph 4"
-      },
-      {
-        "src": "/media/5c0589_34bde73293b34a3e820a380e8566259c~mv2.webp",
-        "alt": "Portfolio photograph 5"
-      },
-      {
-        "src": "/media/5c0589_b20ecdaceb33447d9dd3088dabcd24a6~mv2.webp",
-        "alt": "Portfolio photograph 6"
-      },
-      {
-        "src": "/media/5c0589_993e246b6ef145f7ae710024bcc04b61~mv2.webp",
-        "alt": "Portfolio photograph 7"
-      },
-      {
-        "src": "/media/5c0589_2114ae1b4c2a4844a205efd5c32caf39~mv2.webp",
-        "alt": "Portfolio photograph 8"
-      },
-      {
-        "src": "/media/5c0589_9176cd08731745888749fd42c230945c~mv2.webp",
-        "alt": "Portfolio photograph 9"
-      },
-      {
-        "src": "/media/5c0589_6d20c3f02c4141b797c006682f422e28~mv2.webp",
-        "alt": "Portfolio photograph 10"
-      },
-      {
-        "src": "/media/5c0589_c2e0392b0d4e4d3cad2515d76472fa6c~mv2.webp",
-        "alt": "Portfolio photograph 11"
-      },
-      {
-        "src": "/media/5c0589_37bc8f979b374232882320fb4f341eb2~mv2.webp",
-        "alt": "Portfolio photograph 12"
-      },
-      {
-        "src": "/media/5c0589_c551be0fd9ce4bfd8a179abe76b1ae83~mv2.webp",
-        "alt": "Portfolio photograph 13"
-      },
-      {
-        "src": "/media/5c0589_bc243d74532e485db6c65812ab8b622b~mv2.webp",
-        "alt": "Portfolio photograph 14"
-      },
-      {
-        "src": "/media/5c0589_aa87bfa7f0d74a45933715685ed66614~mv2.webp",
-        "alt": "Portfolio photograph 15"
-      },
-      {
-        "src": "/media/5c0589_4f0120a34ba646dc9d951d108953e15e~mv2.webp",
-        "alt": "Portfolio photograph 16"
-      },
-      {
-        "src": "/media/5c0589_bafbecbb93a046538a666329f8b3a4b0~mv2.webp",
-        "alt": "Portfolio photograph 17"
-      },
-      {
-        "src": "/media/5c0589_fdc7d062ceaa435582bfe4e4d4a48d06~mv2.webp",
-        "alt": "Portfolio photograph 18"
-      }
-    ]
-  },
-  "footerBook": {
-    "title": "PHIL'S-OPHY",
-    "quote": "When life gives you lemonade, make lemons. Life will be all like 'Whaaat?!'",
-    "author": "Phil Dunphy"
+  "projects": [],
+  "blog": {
+    "title": "Notizie",
+    "description": "Novità dai negozi LZ FORTUNA di Cologno Monzese e Calusco d’Adda."
   },
   "seo": {
-    "description": "FolioWeave example portfolio template demonstrating product design work, case studies, photography, writing, and interactive portfolio components.",
+    "title": "LZ FORTUNA | Emporio e sartoria a Cologno Monzese e Calusco d’Adda",
+    "description": "Due negozi di famiglia a Cologno Monzese e Calusco d’Adda: abbigliamento, casa, cucina, cartoleria, giocattoli e sartoria. Aperti dal lunedì al sabato. Scrivici su WhatsApp.",
     "keywords": [
-      "portfolio template",
-      "product design portfolio",
-      "UX design portfolio",
-      "UI design portfolio",
-      "developer portfolio",
-      "case study portfolio",
-      "design systems",
-      "interaction design",
-      "responsive design",
-      "Next.js portfolio"
+      "LZ FORTUNA",
+      "Luisa Moda",
+      "emporio Cologno Monzese",
+      "sartoria Cologno Monzese",
+      "sartoria Calusco d’Adda",
+      "riparazioni sartoriali",
+      "orli pantaloni",
+      "abbigliamento",
+      "articoli per la casa"
     ],
     "knowsAbout": [
-      "Product Design",
-      "User Experience Design",
-      "User Interface Design",
-      "Digital Product Design",
-      "Design Systems",
-      "Interaction Design",
-      "Web Design"
+      "Riparazioni sartoriali",
+      "Modifiche sartoriali",
+      "Abbigliamento",
+      "Articoli per la casa"
     ],
-    "caseStudiesDescription": "Example product-design case studies demonstrating long-form project storytelling, responsive media, metrics, and portfolio navigation."
+    "caseStudiesDescription": "Prodotti e servizi di LZ FORTUNA."
   },
-  "blog": {
-    "title": "Blogs",
-    "heading": "Blogs",
-    "description": "Thoughts on design, code, and building products.",
-    "intro": [
+  "store": {
+    "tagline": "Sartoria e servizi per il tuo stile",
+    "hoursSummary": "Lun–sab 09:00–13:00 e 14:30–19:30, domenica chiuso",
+    "contact": {
+      "phone": "+393668927486",
+      "displayPhone": "366 892 7486",
+      "whatsapp": "+393668927486",
+      "links": [
+        {
+          "label": "Facebook",
+          "href": "https://www.facebook.com/luisamao87"
+        },
+        {
+          "label": "Instagram",
+          "href": "https://www.instagram.com/luisamao87"
+        },
+        {
+          "label": "TikTok",
+          "href": "https://www.tiktok.com/@luisa5558"
+        }
+      ]
+    },
+    "locations": [
       {
-        "text": "Thoughts on "
+        "id": "cologno",
+        "name": "LZ Fortuna",
+        "tagline": "Il negozio nuovo, piccolo e vicino a casa",
+        "notes": {
+          "catalog": "Negozio piccolo: soprattutto abbigliamento, con accessori e piccoli articoli.",
+          "services": "Orli e piccole riparazioni, da lasciare e ritirare in negozio."
+        },
+        "street": "Via Guglielmo Marconi, 2/4",
+        "postalCode": "20093",
+        "city": "Cologno Monzese",
+        "region": "MI",
+        "country": "IT",
+        "hours": "Dal lunedì al sabato\n09:00–13:00\n14:30–19:30\nDomenica chiuso",
+        "primary": true,
+        "highlights": [
+          "Abbigliamento per tutti i giorni",
+          "Accessori e piccoli articoli utili",
+          "Orli e piccole riparazioni"
+        ],
+        "openingHours": [
+          {
+            "days": [
+              "mo",
+              "tu",
+              "we",
+              "th",
+              "fr",
+              "sa"
+            ],
+            "opens": "09:00",
+            "closes": "13:00"
+          },
+          {
+            "days": [
+              "mo",
+              "tu",
+              "we",
+              "th",
+              "fr",
+              "sa"
+            ],
+            "opens": "14:30",
+            "closes": "19:30"
+          }
+        ],
+        "mapName": "Newmoda",
+        "image": "/portfolio/images/negozio-cologno.jpg",
+        "imageAlt": "L’insegna Newmoda e la vetrina del negozio in Via Marconi a Cologno Monzese",
+        "links": [
+          {
+            "label": "TikTok @luisa5558",
+            "href": "https://www.tiktok.com/@luisa5558"
+          }
+        ]
       },
       {
-        "text": "design engineering",
-        "tone": "highlight"
-      },
-      {
-        "text": ", "
-      },
-      {
-        "text": "product philosophy",
-        "tone": "highlight"
-      },
-      {
-        "text": ", and the "
-      },
-      {
-        "text": "obsession with detail",
-        "tone": "highlight"
-      },
-      {
-        "text": "."
+        "id": "calusco",
+        "name": "Luisa Moda",
+        "tagline": "Il negozio storico, da oltre vent’anni",
+        "notes": {
+          "catalog": "Negozio grande: quasi tutte le categorie qui sotto, con più scelta.",
+          "services": "Il laboratorio di sartoria: riparazioni e modifiche anche più impegnative."
+        },
+        "street": "Piazza S. Rocco, 51",
+        "postalCode": "24033",
+        "city": "Calusco d’Adda",
+        "region": "BG",
+        "country": "IT",
+        "hours": "Dal lunedì al sabato\n09:00–13:00\n14:30–19:30\nDomenica chiuso",
+        "highlights": [
+          "Emporio con tanti reparti: casa, cucina, scuola, giocattoli e altro",
+          "Abbigliamento e accessori",
+          "Laboratorio di sartoria per riparazioni e modifiche"
+        ],
+        "openingHours": [
+          {
+            "days": [
+              "mo",
+              "tu",
+              "we",
+              "th",
+              "fr",
+              "sa"
+            ],
+            "opens": "09:00",
+            "closes": "13:00"
+          },
+          {
+            "days": [
+              "mo",
+              "tu",
+              "we",
+              "th",
+              "fr",
+              "sa"
+            ],
+            "opens": "14:30",
+            "closes": "19:30"
+          }
+        ],
+        "mapName": "LZ Fortuna: Negozio tutto casa + Sartoria",
+        "image": "/portfolio/images/negozio-calusco.jpg",
+        "imageAlt": "Le vetrine con l’abbigliamento e l’ingresso del negozio in Piazza S. Rocco a Calusco d’Adda",
+        "imageCredit": "Foto: Google Maps"
       }
-    ]
+    ],
+    "catalog": {
+      "title": "Tutto per la vita di ogni giorno.",
+      "intro": "Dall’abbigliamento agli articoli per la casa, dalla scuola alla cucina: un assortimento di prodotti utili, accessori e piccole scoperte per tutta la famiglia.",
+      "image": "/portfolio/images/assortimento-prodotti.jpg",
+      "imageAlt": "Immagine illustrativa del negozio: abbigliamento, cappotti, calze e intimo, accessori e bigiotteria",
+      "categories": [
+        {
+          "name": "Abbigliamento e accessori",
+          "description": "Abbigliamento per tutti i giorni e accessori per tutta la famiglia."
+        },
+        {
+          "name": "Mobili e arredamento",
+          "description": "Mobili, complementi d’arredo e articoli per organizzare gli spazi."
+        },
+        {
+          "name": "Casa e pulizia",
+          "description": "Oggetti utili per la casa, contenitori e accessori per le faccende quotidiane."
+        },
+        {
+          "name": "Cucina e tavola",
+          "description": "Utensili, stoviglie, accessori per cucinare e per la tavola."
+        },
+        {
+          "name": "Scuola e cartoleria",
+          "description": "Quaderni, penne, materiale scolastico e articoli di cancelleria."
+        },
+        {
+          "name": "Cosmetici e cura personale",
+          "description": "Cosmetici, accessori di bellezza e prodotti per la cura di sé."
+        },
+        {
+          "name": "Giochi e giocattoli",
+          "description": "Giocattoli, piccoli regali e articoli per il tempo libero."
+        },
+        {
+          "name": "Tessili e articoli vari",
+          "description": "Articoli tessili, piccoli accessori e tante altre necessità di ogni giorno."
+        }
+      ],
+      "cardTitle": "Prodotti per tutti i giorni",
+      "cardText": "Abbigliamento, mobili, articoli per la casa e la cucina, scuola, cosmetici, giocattoli e molto altro.",
+      "imageLabel": "Immagine illustrativa"
+    },
+    "services": {
+      "title": "Riparazioni e modifiche",
+      "intro": "Orli, riparazioni e piccoli lavori di sartoria. Qui trovi un riferimento ai prezzi per i servizi più richiesti.",
+      "image": "/portfolio/images/sartoria.jpg",
+      "imageAlt": "",
+      "note": "Sono prezzi indicativi: il costo può cambiare in base al tessuto e al lavoro necessario. Ti diciamo sempre il prezzo prima di iniziare. Orari per lasciare e ritirare i capi: Lun–sab 09:00–13:00 e 14:30–19:30, domenica chiuso.",
+      "groups": [
+        {
+          "id": "pantaloni",
+          "name": "Pantaloni e jeans",
+          "items": [
+            {
+              "name": "Orlo a macchina",
+              "price": "€ 4,00"
+            },
+            {
+              "name": "Orlo con impuntura",
+              "price": "€ 3,00 – 5,00"
+            },
+            {
+              "name": "Orlo invisibile",
+              "price": "€ 5,00"
+            },
+            {
+              "name": "Orlo jeans originale",
+              "price": "€ 6,00"
+            },
+            {
+              "name": "Stringere la gamba",
+              "price": "€ 5,00"
+            },
+            {
+              "name": "Stringere i fianchi",
+              "price": "€ 5,00"
+            },
+            {
+              "name": "Stringere gamba e fianchi",
+              "price": "€ 6,00"
+            },
+            {
+              "name": "Stringere la vita",
+              "price": "€ 6,00"
+            },
+            {
+              "name": "Allargare la vita",
+              "price": "€ 6,00 – 13,00"
+            },
+            {
+              "name": "Cambiare la fodera della tasca",
+              "price": "€ 7,00"
+            },
+            {
+              "name": "Cambiare l’elastico in vita",
+              "price": "€ 5,00 – 7,00"
+            }
+          ]
+        },
+        {
+          "id": "camicie",
+          "name": "Camicie",
+          "items": [
+            {
+              "name": "Accorciare le maniche",
+              "price": "€ 5,00"
+            },
+            {
+              "name": "Orlo",
+              "price": "€ 4,00"
+            },
+            {
+              "name": "Stringere i fianchi",
+              "price": "€ 5,00"
+            },
+            {
+              "name": "Stringere le spalle",
+              "price": "€ 7,00"
+            },
+            {
+              "name": "Giro collo",
+              "price": "€ 5,00"
+            }
+          ]
+        },
+        {
+          "id": "gonne",
+          "name": "Gonne e vestiti",
+          "items": [
+            {
+              "name": "Orlo con bordo sottile",
+              "price": "€ 3,00"
+            },
+            {
+              "name": "Orlo gonna",
+              "price": "€ 4,00"
+            },
+            {
+              "name": "Orlo invisibile",
+              "price": "€ 6,00"
+            },
+            {
+              "name": "Orlo con impuntura",
+              "price": "€ 5,00"
+            },
+            {
+              "name": "Cambiare la cerniera",
+              "price": "€ 5,00"
+            },
+            {
+              "name": "Stringere i fianchi",
+              "price": "€ 7,00"
+            },
+            {
+              "name": "Stringere la vita",
+              "price": "€ 10,00 – 15,00"
+            },
+            {
+              "name": "Stringere il collo",
+              "price": "€ 4,00 – 8,00"
+            },
+            {
+              "name": "Stringere le spalle",
+              "price": "€ 5,00 – 8,00"
+            }
+          ]
+        },
+        {
+          "id": "giacche",
+          "name": "Giacche e cappotti",
+          "items": [
+            {
+              "name": "Accorciare le maniche",
+              "price": "€ 6,00 – 12,00"
+            },
+            {
+              "name": "Stringere",
+              "price": "€ 8,00 – 15,00"
+            },
+            {
+              "name": "Orlo",
+              "price": "€ 6,00 – 13,00"
+            },
+            {
+              "name": "Stringere le spalle",
+              "price": "€ 20,00 – 25,00"
+            },
+            {
+              "name": "Cambiare la fodera uomo",
+              "price": "€ 20,00 – 25,00"
+            },
+            {
+              "name": "Cambiare la fodera donna",
+              "price": "€ 15,00 – 20,00"
+            },
+            {
+              "name": "Cambiare la cerniera",
+              "price": "€ 10,00 – 15,00"
+            }
+          ]
+        },
+        {
+          "id": "altri",
+          "name": "Altri lavori",
+          "items": [
+            {
+              "name": "Riparazione tende",
+              "price": "Su preventivo"
+            }
+          ]
+        }
+      ],
+      "cardTitle": "Cucito e modifiche",
+      "cardText": "Orli, riparazioni e modifiche sartoriali. Consulta il listino e chiedici informazioni."
+    }
   },
-  "interlude": {
-    "title": "Sometimes, I zoom out.",
-    "description": "The best decisions rarely come from staring harder at the screen. They come from stepping back — seeing how one small choice ripples through a whole system, and remembering the person on the other end of it.",
-    "returnTitle": "Then I bring it back down.",
-    "handwrittenTitle": "And keep it simple.",
-    "returnDescription": "Good solutions don't ask for attention. They just work—quietly and effectively.",
-    "image": "/media/5c0589_8d8640a87e5a4209b0cb5e6ba984ddc8~mv2.webp"
+  "template": {
+    "id": "bottega",
+    "settings": {
+      "bottega": {
+        "catalogPath": "prodotti",
+        "servicesPath": "sartoria",
+        "separateGroup": "altri",
+        "quickActions": [
+          {
+            "title": "Avete questo articolo?",
+            "detail": "Chiedi se un prodotto è disponibile, anche con una foto.",
+            "message": "Buongiorno, vorrei sapere se avete disponibile: "
+          },
+          {
+            "title": "Quanto costa sistemare un capo?",
+            "detail": "Descrivi il lavoro o manda una foto del capo.",
+            "message": "Buongiorno, vorrei sapere il prezzo per sistemare questo capo: "
+          },
+          {
+            "title": "Vorrei passare in negozio",
+            "detail": "Fissa una prova, un ritiro o una consegna.",
+            "message": "Buongiorno, vorrei passare in negozio per "
+          }
+        ],
+        "steps": [
+          {
+            "title": "Portaci il capo",
+            "detail": "Passa in negozio, oppure mandaci prima una foto su WhatsApp e raccontaci cosa vuoi sistemare."
+          },
+          {
+            "title": "Ti diciamo prezzo e tempi",
+            "detail": "Guardiamo il capo insieme e ti confermiamo il prezzo prima di iniziare il lavoro."
+          },
+          {
+            "title": "Ritiri il capo sistemato",
+            "detail": "Ti avvisiamo quando è pronto: passi in negozio e lo ritiri."
+          }
+        ],
+        "labels": {
+          "storesIntro": "Due negozi di famiglia, aperti dal lunedì al sabato. Un solo numero per tutti e due: 366 892 7486.",
+          "contactText": "Hai una domanda, cerchi un prodotto o vuoi passare in negozio? Scrivici su WhatsApp o chiamaci: ti risponde direttamente la nostra famiglia."
+        }
+      }
+    }
+  },
+  "deployment": {
+    "provider": "firebase",
+    "providers": {
+      "firebase": {
+        "projectId": "lzfortuna-store-cologno",
+        "site": "lzfortuna",
+        "origin": "https://lzfortuna.web.app"
+      }
+    }
   }
 }
