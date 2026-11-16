@@ -54,7 +54,7 @@
       },
       "wordmark": {
         "enum": ["split", "plain"],
-        "description": "split sets every word of the brand name after the first in italic, as in LZ FORTUNA; plain keeps it upright. Default: split."
+        "description": "split sets every word of the brand name after the first in italic, as in CASA LUNARI; plain keeps it upright. Default: split."
       },
       "separateGroup": {
         "type": "string",
