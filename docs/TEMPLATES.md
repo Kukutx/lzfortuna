@@ -166,7 +166,19 @@ reserved. Only the selected template's pages exist; they join the sitemap.
 and opening hours, contact channels (phone, WhatsApp, email, other links), a
 catalog of product kinds and a services price list (see `portfolio.schema.json`).
 A store template lists `"requires": ["store"]`; other templates receive an empty
-block (`{ "locations": [] }`) and may ignore it.
+block (`{ "locations": [] }`) and may ignore it. Beyond the essentials the block
+carries what a real shop's site needs: a location's photo with `imageAlt` and
+an `imageCredit` its source requires ("Foto: Google Maps"), a sentence per page
+in `notes.catalog` and `notes.services`, the catalog's and services' shorter
+`cardTitle` and `cardText` for the home page and an `imageLabel` on their
+pictures ("Immagine illustrativa"), and `hoursSummary`, one footer line when
+every location keeps the same hours. `seo.title` replaces the generated page
+title.
+
+`requires` may also name an inner block by its dotted path. Templates that show
+an email address list `"site.contact"`, so a shop's profile without one is
+accepted by templates that do not need it and refused, with the reason, by
+those that do.
 
 For the gallery, a manifest may set `"category"` (`personal`, the default, or
 `store`), `"preview"`, a `.webp`, `.png` or `.jpg` picture of the template in

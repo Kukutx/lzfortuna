@@ -10,6 +10,7 @@ import {
   fill,
   fullAddress,
   hoursLine,
+  sharedHoursLine,
   hoursText,
   hoursRows,
   mapsUrl,
@@ -27,9 +28,8 @@ const Home: TemplateModule["Home"] = ({ context }) => {
   const summary = plainText(context.introduction.summary);
   const roleLine = plainText(context.introduction.roleLine);
   const tagline = store.tagline || roleLine;
-  const sameHours =
-    new Set(locations.map((l) => hoursText(l, shop.locale))).size === 1;
-  const sharedHours = sameHours ? hoursLine(locations[0] && hoursText(locations[0], shop.locale)) : "";
+  const sharedHours = sharedHoursLine(shop);
+  const sameHours = Boolean(sharedHours);
   const footerNav = [
     ...shop.nav,
     ...(context.capabilities.writing ? [{ href: "/blogs", label: copy.navWriting }] : []),
@@ -39,10 +39,11 @@ const Home: TemplateModule["Home"] = ({ context }) => {
     store.catalog && shop.catalogHref
       ? {
           key: "catalog",
-          title: store.catalog.title,
-          text: store.catalog.intro,
+          title: store.catalog.cardTitle ?? store.catalog.title,
+          text: store.catalog.cardText ?? store.catalog.intro,
           image: store.catalog.image,
           alt: store.catalog.imageAlt ?? "",
+          label: store.catalog.imageLabel,
           href: shop.catalogHref,
           link: copy.catalogLink,
         }
@@ -50,10 +51,11 @@ const Home: TemplateModule["Home"] = ({ context }) => {
     store.services && shop.servicesHref
       ? {
           key: "services",
-          title: store.services.title,
-          text: store.services.intro,
+          title: store.services.cardTitle ?? store.services.title,
+          text: store.services.cardText ?? store.services.intro,
           image: store.services.image,
           alt: store.services.imageAlt ?? "",
+          label: store.services.imageLabel,
           href: shop.servicesHref,
           link: copy.servicesLink,
         }
@@ -165,6 +167,7 @@ const Home: TemplateModule["Home"] = ({ context }) => {
                         unoptimized
                         sizes="(max-width: 768px) 100vw, 50vw"
                       />
+                      {item.label && <span className={styles.imageLabel}>{item.label}</span>}
                     </div>
                   )}
                   <div className={styles.cardBody}>
@@ -222,17 +225,21 @@ const Home: TemplateModule["Home"] = ({ context }) => {
                 {shop.email}
               </a>
             )}
-            {shop.links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                {...external(link.href)}
-                className={styles.textLinkLg}
-              >
-                {link.label} ↗
-              </a>
-            ))}
           </div>
+          {shop.links.length > 0 && (
+            <>
+              {copy.follow && <p className={styles.followLabel}>{copy.follow}</p>}
+              <ul className={styles.followLinks}>
+                {shop.links.map((link) => (
+                  <li key={link.href}>
+                    <a href={link.href} {...external(link.href)} className={styles.textLinkLg}>
+                      {link.label} ↗
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
         </section>
       </main>
 
@@ -293,7 +300,16 @@ function StoreCard({
     <article className={styles.storeCard}>
       {location.image && (
         <div className={`${styles.media} ${styles.storeImage}`}>
-          <Image src={location.image} alt="" fill unoptimized sizes="(max-width: 1024px) 100vw, 50vw" />
+          <Image
+            src={location.image}
+            alt={location.imageAlt ?? ""}
+            fill
+            unoptimized
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
+          {location.imageCredit && (
+            <span className={styles.imageLabel}>{location.imageCredit}</span>
+          )}
         </div>
       )}
       <p className={`${styles.eyebrow} ${styles.storeKicker}`}>{location.city}</p>

@@ -74,7 +74,7 @@ export default function ServicesPage({ context }: { context: TemplateContext }) 
               {showStrip && (
                 <>
                   <h2 className={styles.whichTitle}>{copy.whichStore}</h2>
-                  <LocationStrip shop={shop} className={styles.whichStrip} withAddress />
+                  <LocationStrip shop={shop} className={styles.whichStrip} withAddress page="services" />
                 </>
               )}
             </div>

@@ -167,6 +167,17 @@ export function hoursLine(hours: string | undefined) {
     .join(" · ");
 }
 
+/**
+ * The footer's one line of hours when every location keeps the same ones:
+ * the store's own summary, else the shared hours on one line. Empty when
+ * the locations differ (each then shows its own).
+ */
+export function sharedHoursLine(shop: { store: { hoursSummary?: string }; locations: readonly Location[]; locale: string }) {
+  const texts = new Set(shop.locations.map((location) => hoursText(location, shop.locale)));
+  if (texts.size !== 1) return "";
+  return shop.store.hoursSummary || hoursLine([...texts][0]);
+}
+
 /** The cities of every location, once each. */
 export function cities(locations: readonly Location[]) {
   return [...new Set(locations.map((location) => location.city))];

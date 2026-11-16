@@ -41,7 +41,7 @@ export default function CatalogPage({ context }: { context: TemplateContext }) {
               </p>
             )}
           </div>
-          <LocationStrip shop={shop} className={styles.catalogStrip} withAddress={false} />
+          <LocationStrip shop={shop} className={styles.catalogStrip} withAddress={false} page="catalog" />
           <div className={styles.categories}>
             {catalog.categories.map((category, index) => (
               <article key={`${index}-${category.name}`} className={styles.category}>

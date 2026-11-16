@@ -48,6 +48,7 @@ const it = {
   contactTitle: "Parliamone",
   contactText:
     "Hai una domanda, cerchi un prodotto o vuoi passare in negozio? Scrivici su WhatsApp o chiamaci: ti rispondiamo noi.",
+  follow: "Seguici anche su",
   phoneAndWhatsapp: "Telefono e WhatsApp:",
   phoneOnly: "Telefono:",
   whatsappOnly: "WhatsApp:",
@@ -140,6 +141,7 @@ const en: BottegaCopy = {
   contactTitle: "Let’s talk",
   contactText:
     "Have a question, looking for a product or want to drop by? Message us on WhatsApp or call us: we’ll answer you ourselves.",
+  follow: "Also on",
   phoneAndWhatsapp: "Phone and WhatsApp:",
   phoneOnly: "Phone:",
   whatsappOnly: "WhatsApp:",

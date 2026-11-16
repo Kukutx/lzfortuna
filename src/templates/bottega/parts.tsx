@@ -6,6 +6,7 @@ import {
   external,
   fullAddress,
   hoursLine,
+  sharedHoursLine,
   hoursText,
   shopOf,
   type Shop,
@@ -32,9 +33,8 @@ export function SubpageShell({
 }) {
   const shop = shopOf(context);
   const { copy } = shop;
-  const sameHours =
-    new Set(shop.locations.map((l) => hoursText(l, shop.locale))).size === 1;
-  const hours = sameHours ? hoursLine(shop.locations[0] && hoursText(shop.locations[0], shop.locale)) : "";
+  const hours = sharedHoursLine(shop);
+  const sameHours = Boolean(hours);
   return (
     <div>
       <header className={styles.subHeader}>
@@ -171,10 +171,13 @@ export function LocationStrip({
   shop,
   className,
   withAddress,
+  page,
 }: {
   shop: Shop;
   className: string;
   withAddress: boolean;
+  /** The page showing the strip: a location may say something for it alone. */
+  page: "catalog" | "services";
 }) {
   if (shop.locations.length < 2) return null;
   return (
@@ -184,8 +187,10 @@ export function LocationStrip({
           <p className={styles.stripName}>
             {location.name} · {location.city}
           </p>
-          {location.note ? (
-            <p className={`${styles.lead} ${styles.stripNote}`}>{location.note}</p>
+          {(location.notes?.[page] ?? location.note) ? (
+            <p className={`${styles.lead} ${styles.stripNote}`}>
+              {location.notes?.[page] ?? location.note}
+            </p>
           ) : location.highlights?.length ? (
             <p className={`${styles.lead} ${styles.stripNote}`}>
               {location.highlights.join(" · ")}

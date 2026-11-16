@@ -198,6 +198,10 @@ export type PortfolioConfig = {
    */
   seo: {
     /**
+     * The home page's title in search results and shared links. Built from the name and role when omitted.
+     */
+    title?: string;
+    /**
      * Primary site description used for metadata, Open Graph, Twitter, Manifest, and Person JSON-LD.
      */
     description: string;
@@ -231,6 +235,10 @@ export type PortfolioConfig = {
      * One line under the brand name, such as what the shop is.
      */
     tagline?: string;
+    /**
+     * The hours on one line for the footer when every location keeps the same ones, such as Lun–sab 09:00–13:00 e 14:30–19:30, domenica chiuso. Built from the hours when omitted.
+     */
+    hoursSummary?: string;
     contact?: {
       /**
        * Main phone for calls.
@@ -258,6 +266,13 @@ export type PortfolioConfig = {
        * One sentence about this location for pages that list every location, such as the catalog.
        */
       note?: string;
+      /**
+       * A sentence for one page alone, in place of note there: what this location offers for the catalog, or for the services.
+       */
+      notes?: {
+        catalog?: string;
+        services?: string;
+      };
       /**
        * Street and number. Leave empty while unknown: pages then invite visitors to ask, and no map link is made.
        */
@@ -300,6 +315,14 @@ export type PortfolioConfig = {
        */
       highlights?: string[];
       image?: LocalImage;
+      /**
+       * What the photo shows, for screen readers.
+       */
+      imageAlt?: string;
+      /**
+       * Credit shown on the photo when its source requires one, such as Foto: Google Maps.
+       */
+      imageCredit?: string;
       links?: StoreLink[];
       /**
        * The name this location goes by on maps, when it differs from its name here.
@@ -314,6 +337,18 @@ export type PortfolioConfig = {
       intro?: string;
       image?: LocalImage;
       imageAlt?: string;
+      /**
+       * Shorter title for this page's card on the home page; the title when omitted.
+       */
+      cardTitle?: string;
+      /**
+       * Shorter text for this page's card on the home page; the intro when omitted.
+       */
+      cardText?: string;
+      /**
+       * A short label shown on the picture, such as that it is illustrative.
+       */
+      imageLabel?: string;
       note?: string;
       /**
        * @minItems 1
@@ -339,6 +374,18 @@ export type PortfolioConfig = {
       intro?: string;
       image?: LocalImage;
       imageAlt?: string;
+      /**
+       * Shorter title for this page's card on the home page; the title when omitted.
+       */
+      cardTitle?: string;
+      /**
+       * Shorter text for this page's card on the home page; the intro when omitted.
+       */
+      cardText?: string;
+      /**
+       * A short label shown on the picture, such as that it is illustrative.
+       */
+      imageLabel?: string;
       /**
        * Shown with the prices, such as that they are indicative.
        */

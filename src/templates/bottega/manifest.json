@@ -157,6 +157,7 @@
             "inquireMessage",
             "contactTitle",
             "contactText",
+            "follow",
             "phoneAndWhatsapp",
             "phoneOnly",
             "whatsappOnly",

@@ -9,11 +9,13 @@ const rootDescription = portfolioSeo.description;
 const rootKeywords = portfolioSeo.keywords;
 /** A store site speaks as its business, not as a person's portfolio. */
 const isStore = templateCategory === "store";
-const rootTitle = isStore
-  ? `${identity.name} | ${portfolio.store?.tagline || identity.role}`
-  : `${identity.name} | ${identity.role} in ${identity.country}${
-      identity.company ? ` | ${identity.company}` : ""
-    }`;
+const rootTitle =
+  portfolioSeo.title ??
+  (isStore
+    ? `${identity.name} | ${identity.role || portfolio.store?.tagline}`
+    : `${identity.name} | ${identity.role} in ${identity.country}${
+        identity.company ? ` | ${identity.company}` : ""
+      }`);
 const openGraphLocale = identity.locale.replaceAll("-", "_");
 
 export const rootMetadata: Metadata = {
