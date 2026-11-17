@@ -77,6 +77,11 @@ adapter on Linux or macOS (CI or a Linux machine): it does not support
 Windows. Adding a host is one entry in the schema's `deployment.providers`,
 one step in `scripts/deploy.mjs` and a row here.
 
+A route handler that answers live is named `route.server.ts` (the weather,
+the demo podcasts): hosts that run the app serve it, and the static export
+leaves it out. Every other handler and metadata route (manifest, robots,
+sitemap) is marked `force-static`, which `qa/deploy.test.mjs` checks.
+
 ### Moved addresses
 
 When a site replaces an older one, `deployment.redirects` keeps the old links

@@ -16,6 +16,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { firebaseRedirects, profileRedirects } from "../src/config/redirects.mjs";
+import { isPlaceholderPath } from "../src/lib/static-params.mjs";
 import { securityHeaders } from "../src/config/security-headers.mjs";
 
 /** Kept in step with WEATHER_SERVICE in src/lib/weather-client.ts. */
@@ -118,6 +119,64 @@ export function firebaseConfig(site, redirects = []) {
   };
 }
 
+/** Next's mark on a page that rendered notFound(). */
+const NOT_FOUND_MARK = "NEXT_HTTP_ERROR_FALLBACK;404";
+
+/** Drops from a static export what the site does not publish, so the host
+ * answers those addresses with its real 404: the placeholders of unused
+ * dynamic routes (src/lib/static-params.mjs) and every page that rendered as
+ * not found (routes the profile turns off, such as the demos). A page's own
+ * files go (`x.html`, `x.txt`, `x/__next.*`); files beside them stay.
+ * Returns what it removed. */
+export function removeUnpublished(out) {
+  const files = fs.readdirSync(out, { recursive: true }).map(String);
+  const placeholders = files
+    .filter((relative) => isPlaceholderPath(relative))
+    .sort((a, b) => a.length - b.length)
+    .filter(
+      (relative, index, all) =>
+        !all
+          .slice(0, index)
+          .some((parent) => relative.startsWith(`${parent}${path.sep}`)),
+    );
+  const notFound = files
+    .filter(
+      (relative) => relative.endsWith(".html") && !isPlaceholderPath(relative),
+    )
+    .filter((relative) =>
+      fs
+        .readFileSync(path.join(out, relative), "utf8")
+        .includes(NOT_FOUND_MARK),
+    )
+    .flatMap((relative) => {
+      const page = relative.slice(0, -".html".length);
+      const segments = files.filter(
+        (file) =>
+          path.dirname(file) === page &&
+          path.basename(file).startsWith("__next."),
+      );
+      return [
+        relative,
+        ...[`${page}.txt`].filter((file) => files.includes(file)),
+        ...segments,
+      ];
+    });
+  const removed = [...placeholders, ...notFound];
+  for (const relative of removed)
+    fs.rmSync(path.join(out, relative), { recursive: true, force: true });
+  // Folders those pages leave empty go too.
+  for (const relative of new Set(notFound.map((file) => path.dirname(file)))) {
+    const folder = path.join(out, relative);
+    if (
+      relative !== "." &&
+      fs.existsSync(folder) &&
+      fs.readdirSync(folder).length === 0
+    )
+      fs.rmdirSync(folder);
+  }
+  return removed;
+}
+
 const steps = {
   cloudflare({ settings, origin }, apply) {
     // At the root: Wrangler resolves the config's paths from its folder.
@@ -147,6 +206,7 @@ const steps = {
       FOLIO_HOSTING: "firebase",
     };
     run("npm", ["run", "build"], env);
+    removeUnpublished(path.join(root, "out"));
     const site = settings.site ?? settings.projectId;
     fs.writeFileSync(
       path.join(root, "firebase.generated.json"),

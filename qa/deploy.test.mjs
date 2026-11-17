@@ -1,7 +1,7 @@
 // npm run deploy: provider selection and the per-host configuration it writes.
 import assert from "node:assert/strict";
 import test from "node:test";
-import { firebaseConfig, target, wranglerConfig } from "../scripts/deploy.mjs";
+import { firebaseConfig, removeUnpublished, target, wranglerConfig } from "../scripts/deploy.mjs";
 import { nextRedirects, profileRedirects } from "../src/config/redirects.mjs";
 
 const profile = {
@@ -81,4 +81,66 @@ test("Next's hashed build output is cached for good on Firebase", () => {
   const { hosting } = firebaseConfig("example-site");
   const immutable = hosting.headers.find((h) => h.source === "/_next/static/**");
   assert.match(immutable.headers[0].value, /immutable/);
+});
+
+test("everything the app answers can be exported for a static host", async () => {
+  const fs = await import("node:fs");
+  const path = await import("node:path");
+  const app = path.resolve(import.meta.dirname, "../src/app");
+  const files = fs.readdirSync(app, { recursive: true }).map(String);
+  // A live handler is named route.server.ts and is left out of static exports;
+  // any other handler or metadata route must be marked static.
+  const handlers = files.filter((file) =>
+    /(?:^|[\/])(?:route\.[jt]sx?|(?:manifest|robots|sitemap)\.[jt]s)$/.test(file),
+  );
+  assert.ok(handlers.length > 0);
+  for (const file of handlers) {
+    const source = fs.readFileSync(path.join(app, file), "utf8");
+    assert.match(source, /export const dynamic = "force-static"/, `${file} is not marked static`);
+  }
+});
+
+test("a static export keeps only what the site publishes", async () => {
+  const fs = await import("node:fs");
+  const os = await import("node:os");
+  const path = await import("node:path");
+  const { exportableParams, UNPUBLISHED } = await import("../src/lib/static-params.mjs");
+  const before = process.env.FOLIO_HOSTING;
+  try {
+    process.env.FOLIO_HOSTING = "firebase";
+    assert.deepEqual(exportableParams([], "slug"), [{ slug: UNPUBLISHED }]);
+    assert.deepEqual(exportableParams([{ slug: "a" }], "slug"), [{ slug: "a" }]);
+    delete process.env.FOLIO_HOSTING;
+    assert.deepEqual(exportableParams([], "slug"), [], "hosts that run the app need none");
+  } finally {
+    if (before === undefined) delete process.env.FOLIO_HOSTING;
+    else process.env.FOLIO_HOSTING = before;
+  }
+  const out = fs.mkdtempSync(path.join(os.tmpdir(), "folio-export-"));
+  try {
+    const off = '<script>self.__next_f.push([1,"NEXT_HTTP_ERROR_FALLBACK;404"])</script>';
+    const files = {
+      [`blogs/${UNPUBLISHED}.html`]: off,
+      [`blogs/${UNPUBLISHED}.txt`]: "",
+      [`blogs/${UNPUBLISHED}/__next._tree.txt`]: "",
+      "blogs/kept.html": "<p>post</p>",
+      "demo.html": off,
+      "demo.txt": "",
+      "demo/__next._tree.txt": "",
+      "demo/logo.png": "",
+      "gone.html": off,
+      "gone/__next._full.txt": "",
+      "404.html": "<title>Page Not Found</title>",
+      "index.html": "<p>home</p>",
+    };
+    for (const [file, body] of Object.entries(files)) {
+      fs.mkdirSync(path.dirname(path.join(out, file)), { recursive: true });
+      fs.writeFileSync(path.join(out, file), body);
+    }
+    removeUnpublished(out);
+    const left = fs.readdirSync(out, { recursive: true }).map((p) => String(p).replaceAll("\\", "/")).sort();
+    assert.deepEqual(left, ["404.html", "blogs", "blogs/kept.html", "demo", "demo/logo.png", "index.html"]);
+  } finally {
+    fs.rmSync(out, { recursive: true, force: true });
+  }
 });
