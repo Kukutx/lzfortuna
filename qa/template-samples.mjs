@@ -11,6 +11,19 @@ import { startPreview } from "../scripts/template-preview.mjs";
 // profile filled from that sample, and held to the same functionality and
 // quality suites a shop's own profile meets.
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+// A sandbox has no Git or deployment identity of its own. The CI variables
+// name the real checkout's branch (on a pull request into personal, the
+// production site), and the sandbox's content build must not be judged by
+// them; extension-browser.mjs clears the same ones for its sandbox.
+for (const name of [
+  "BOUNDARY_TARGET",
+  "BOUNDARY_SHARED_BASE",
+  "GITHUB_BASE_REF",
+  "GITHUB_REF_NAME",
+  "VERCEL_GIT_COMMIT_REF",
+  "VERCEL",
+])
+  delete process.env[name];
 const templates = [];
 for (const template of loadCatalog(root).templates) {
   if ((template.category ?? "personal") !== "store") continue;
