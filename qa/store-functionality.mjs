@@ -3,7 +3,7 @@ import { chromium } from "playwright-core";
 import fs from "node:fs/promises";
 import { loadQaProfile } from "./profile.mjs";
 import { installServiceFixtures } from "./service-fixtures.mjs";
-import { MENU_TOGGLE, qaTemplate } from "./template.mjs";
+import { qaTemplate } from "./template.mjs";
 
 // What a shop's visitor relies on, read from the profile's store block rather
 // than from one shop's copy: every location with its address and directions,
@@ -311,9 +311,9 @@ try {
   await mobile.goto(base, { waitUntil: "networkidle" });
 
   await test("small-screen menu opens, leads to a section and closes", async () => {
-    const toggle = mobile.locator(MENU_TOGGLE).first();
+    const toggle = mobile.locator(template.menuToggle).first();
     assert(await toggle.isVisible(), "no visible menu button");
-    await waitForHydration(mobile, MENU_TOGGLE);
+    await waitForHydration(mobile, template.menuToggle);
     await toggle.click();
     assert((await toggle.getAttribute("aria-expanded")) === "true", "the menu did not open");
     const menu = mobile.locator(`#${await toggle.getAttribute("aria-controls")}`);

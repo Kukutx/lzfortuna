@@ -27,16 +27,20 @@ export function qaTemplate(profile = loadQaProfile()) {
     sections: template.sections ?? [],
     pages: templatePages(resolved),
     options: resolved.options,
+    menuToggle: menuToggle(template.id),
   };
 }
 
 /**
  * The button that opens the small-screen menu. Classic names its own; other
- * templates are found by the disclosure contract every menu button keeps (it
- * controls the menu and says whether it is open).
+ * templates are found by the disclosure contract every menu button keeps in
+ * the page header (it controls the menu and says whether it is open).
  */
-export const MENU_TOGGLE =
-  ".mobile-menu-toggle, header button[aria-controls][aria-expanded]";
+function menuToggle(id) {
+  return id === "classic"
+    ? ".mobile-menu-toggle"
+    : "header button[aria-controls][aria-expanded]";
+}
 
 /**
  * Runs a suite only where the template renders what it checks, and says so

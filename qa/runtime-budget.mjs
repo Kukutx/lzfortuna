@@ -5,7 +5,7 @@ import path from "node:path";
 import { chromium } from "playwright-core";
 import { firstPhotograph } from "./profile.mjs";
 import { installServiceFixtures } from "./service-fixtures.mjs";
-import { MENU_TOGGLE, qaTemplate } from "./template.mjs";
+import { qaTemplate } from "./template.mjs";
 
 const template = qaTemplate();
 
@@ -303,7 +303,7 @@ try {
           await page.evaluate(() => performance.mark("qa:hero-actions"));
           if (width < 768)
             for (let i = 0; i < 3; i++) {
-              await page.locator(MENU_TOGGLE).first().click();
+              await page.locator(template.menuToggle).first().click();
               await page.keyboard.press("Escape");
             }
           // Classic's portrait cycles on a click; other heroes have no such control.
