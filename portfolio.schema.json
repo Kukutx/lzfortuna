@@ -1444,6 +1444,31 @@
               }
             }
           }
+        },
+        "redirects": {
+          "type": "array",
+          "description": "Old addresses that move permanently to new ones on every host, so links and search results that still point at them keep working.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["from", "to"],
+            "properties": {
+              "from": {
+                "type": "string",
+                "pattern": "^/[^/\\\\\\s?#%:*]+(?:/[^/\\\\\\s?#%:*]+)*$",
+                "description": "The old path, without a trailing slash; not the home page."
+              },
+              "to": {
+                "type": "string",
+                "pattern": "^/(?!/)[^\\\\\\s?%:*]*$",
+                "description": "Where it now lives on this site; may end in a #section."
+              },
+              "subpaths": {
+                "type": "boolean",
+                "description": "Also move every address under `from` to `to`."
+              }
+            }
+          }
         }
       }
     },

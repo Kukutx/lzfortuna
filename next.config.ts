@@ -1,4 +1,7 @@
 import type { NextConfig } from "next";
+import fs from "node:fs";
+import path from "node:path";
+import { nextRedirects, profileRedirects } from "./src/config/redirects.mjs";
 import { securityHeaders as sharedSecurityHeaders } from "./src/config/security-headers.mjs";
 import extensionNetwork from "./src/portfolio/security.generated.json";
 
@@ -21,6 +24,16 @@ const securityHeaders = sharedSecurityHeaders({
  * own configuration serves the headers. */
 const staticExport = process.env.FOLIO_HOSTING === "firebase";
 
+/** The profile's old addresses (deployment.redirects); a static export gets
+ * them from its host's configuration instead. */
+const redirects = nextRedirects(
+  profileRedirects(
+    JSON.parse(
+      fs.readFileSync(path.join(process.cwd(), "portfolio.json"), "utf8"),
+    ),
+  ),
+);
+
 const nextConfig: NextConfig = {
   allowedDevOrigins: ["127.0.0.1"],
   reactStrictMode: true,
@@ -34,6 +47,13 @@ const nextConfig: NextConfig = {
   ...(staticExport
     ? { output: "export", images: { unoptimized: true } }
     : {
+        ...(redirects.length > 0
+          ? {
+              async redirects() {
+                return redirects;
+              },
+            }
+          : {}),
         async headers() {
           return [
             {

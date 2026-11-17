@@ -77,6 +77,23 @@ adapter on Linux or macOS (CI or a Linux machine): it does not support
 Windows. Adding a host is one entry in the schema's `deployment.providers`,
 one step in `scripts/deploy.mjs` and a row here.
 
+### Moved addresses
+
+When a site replaces an older one, `deployment.redirects` keeps the old links
+and search results working on every host. Each entry moves one path
+permanently; `subpaths` also moves everything under it:
+
+```json
+"redirects": [
+  { "from": "/services/sewing", "to": "/sartoria", "subpaths": true },
+  { "from": "/services/3d", "to": "/#services" }
+]
+```
+
+Hosts that run the app get them through `next.config.ts` (308); Firebase gets
+them in `firebase.generated.json` (301). A destination that is itself
+redirected is refused.
+
 ## Vercel
 
 Create a project from the repository and use the standard Next.js preset. No FolioWeave-specific build adapter is required.
