@@ -35,14 +35,14 @@
 }
 .drift {
   animation:
-    stampsDx calc(var(--xp, 7.3) * 0.5s) cubic-bezier(0.37, 0, 0.63, 1) calc(var(--xo, 0) * -1s) infinite
-      alternate,
-    stampsDr calc(var(--rp, 11.7) * 0.5s) cubic-bezier(0.37, 0, 0.63, 1) calc(var(--ro, 0) * -1s) infinite
-      alternate;
+    stampsDx calc(var(--xp, 7.3) * 0.5s) cubic-bezier(0.37, 0, 0.63, 1)
+      calc(var(--xo, 0) * -1s) infinite alternate,
+    stampsDr calc(var(--rp, 11.7) * 0.5s) cubic-bezier(0.37, 0, 0.63, 1)
+      calc(var(--ro, 0) * -1s) infinite alternate;
 }
 .driftY {
-  animation: stampsDy calc(var(--yp, 9.1) * 0.5s) cubic-bezier(0.37, 0, 0.63, 1) calc(var(--yo, 0) * -1s)
-    infinite alternate;
+  animation: stampsDy calc(var(--yp, 9.1) * 0.5s) cubic-bezier(0.37, 0, 0.63, 1)
+    calc(var(--yo, 0) * -1s) infinite alternate;
 }
 .root[data-off] .drift,
 .root[data-off] .driftY {
@@ -114,19 +114,61 @@
 }
 /* the type on the stamps; pages may hand in their own faces */
 .fMono {
-  font-family: var(--stamps-mono, "Geist Mono", "Roboto Mono", ui-monospace, "SF Mono", Menlo, monospace);
+  font-family: var(
+    --stamps-mono,
+    "Geist Mono",
+    "Roboto Mono",
+    ui-monospace,
+    "SF Mono",
+    Menlo,
+    monospace
+  );
 }
 .fType {
-  font-family: var(--stamps-type, "Courier Prime", "Courier New", Courier, "Nimbus Mono PS", monospace);
+  font-family: var(
+    --stamps-type,
+    "Courier Prime",
+    "Courier New",
+    Courier,
+    "Nimbus Mono PS",
+    monospace
+  );
 }
 .fSans {
-  font-family: var(--stamps-sans, Urbanist, Questrial, "Avenir Next", Avenir, "Century Gothic", sans-serif);
+  font-family: var(
+    --stamps-sans,
+    Urbanist,
+    Questrial,
+    "Avenir Next",
+    Avenir,
+    "Century Gothic",
+    sans-serif
+  );
 }
 .fSerif {
-  font-family: var(--stamps-serif, "Bodoni Moda", Didot, "Bodoni 72", "Playfair Display", Georgia, "Times New Roman", serif);
+  font-family: var(
+    --stamps-serif,
+    "Bodoni Moda",
+    Didot,
+    "Bodoni 72",
+    "Playfair Display",
+    Georgia,
+    "Times New Roman",
+    serif
+  );
 }
 .fCjk {
-  font-family: var(--stamps-cjk, "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Noto Sans CJK SC", "Source Han Sans SC", "Microsoft YaHei", "WenQuanYi Zen Hei", sans-serif);
+  font-family: var(
+    --stamps-cjk,
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Noto Sans SC",
+    "Noto Sans CJK SC",
+    "Source Han Sans SC",
+    "Microsoft YaHei",
+    "WenQuanYi Zen Hei",
+    sans-serif
+  );
 }
 /* each layer is drawn once: only its opacity changes, and the stamp's lift, push and tilt move it
    without drawing it again */
@@ -146,7 +188,8 @@
   opacity: 0;
 }
 .soft > * {
-  filter: blur(8px) drop-shadow(0 17px 26px var(--stamps-shadow, rgba(0, 0, 0, 0.36)));
+  filter: blur(8px)
+    drop-shadow(0 17px 26px var(--stamps-shadow, rgba(0, 0, 0, 0.36)));
 }
 /* the deeper shadow of a lifted stamp, faded in with the lift */
 .lifted {
@@ -185,12 +228,12 @@
 }
 .pillDrift {
   z-index: 100;
-  animation: stampsDx calc(var(--xp, 7.3) * 0.5s) cubic-bezier(0.37, 0, 0.63, 1) calc(var(--xo, 0) * -1s) infinite
-    alternate;
+  animation: stampsDx calc(var(--xp, 7.3) * 0.5s) cubic-bezier(0.37, 0, 0.63, 1)
+    calc(var(--xo, 0) * -1s) infinite alternate;
 }
 .pillDriftY {
-  animation: stampsDy calc(var(--yp, 9.1) * 0.5s) cubic-bezier(0.37, 0, 0.63, 1) calc(var(--yo, 0) * -1s)
-    infinite alternate;
+  animation: stampsDy calc(var(--yp, 9.1) * 0.5s) cubic-bezier(0.37, 0, 0.63, 1)
+    calc(var(--yo, 0) * -1s) infinite alternate;
 }
 .root[data-off] .pillDrift,
 .root[data-off] .pillDriftY {
@@ -207,7 +250,8 @@
   border-radius: 12.33px;
   background: var(--ink, #201a19);
   color: var(--paper, #eeebe9);
-  font: 500 12.5px/24.65px var(--font-mono, ui-monospace, "SFMono-Regular", Menlo, monospace);
+  font: 500 12.5px/24.65px
+    var(--font-mono, ui-monospace, "SFMono-Regular", Menlo, monospace);
   letter-spacing: 0.08em;
   white-space: nowrap;
   pointer-events: none;
@@ -291,7 +335,11 @@
   top: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(30% 25% at 50% 50%, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0) 70%);
+  background: radial-gradient(
+    30% 25% at 50% 50%,
+    rgba(255, 255, 255, 0.34),
+    rgba(255, 255, 255, 0) 70%
+  );
   mix-blend-mode: soft-light;
   transform: translate(var(--tx, 0%), var(--ty, -5%));
   transition: transform 0.2s;
@@ -304,7 +352,8 @@
   bottom: 22px;
   margin: 0;
   text-align: center;
-  font: 400 12px/14px var(--font-mono, ui-monospace, "SFMono-Regular", Menlo, monospace);
+  font: 400 12px/14px
+    var(--font-mono, ui-monospace, "SFMono-Regular", Menlo, monospace);
   letter-spacing: 0.12em;
   color: rgba(255, 255, 255, 0.46);
   pointer-events: none;

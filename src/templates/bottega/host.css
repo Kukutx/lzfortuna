@@ -1,6 +1,31 @@
 /* Document-level settings for Bottega only; everything else lives in
    bottega.module.css. Plugin roots sit outside the template's shell and read
    the --fw-* tokens from here. */
+
+/* Fallbacks sized like Inter and Cormorant Garamond, so text keeps its place
+   while the fonts load (see fonts.ts). The overrides are the ones next/font
+   computes for these files against Arial; the sources are Arial and the
+   fonts that share its metrics. */
+@font-face {
+  font-family: "Bottega Sans Fallback";
+  src:
+    local("Arial"), local("ArialMT"), local("Liberation Sans"),
+    local("LiberationSans"), local("Arimo"), local("Helvetica");
+  ascent-override: 89.79%;
+  descent-override: 22.36%;
+  line-gap-override: 0%;
+  size-adjust: 107.89%;
+}
+@font-face {
+  font-family: "Bottega Serif Fallback";
+  src:
+    local("Arial"), local("ArialMT"), local("Liberation Sans"),
+    local("LiberationSans"), local("Arimo"), local("Helvetica");
+  ascent-override: 105.47%;
+  descent-override: 32.76%;
+  line-gap-override: 0%;
+  size-adjust: 87.6%;
+}
 html[data-template="bottega"] {
   --fw-font: "BottegaSans", system-ui, sans-serif;
   --fw-surface: #ffffff;
@@ -41,7 +66,9 @@ html[data-template="bottega"] ::-webkit-scrollbar-thumb:hover {
   html[data-template="bottega"]:has([data-bottega-bar]) {
     --fw-floating-right: 16px;
     --fw-floating-bottom-right: calc(4rem + 16px + env(safe-area-inset-bottom));
-    --fw-floating-bottom-center: calc(4rem + 16px + env(safe-area-inset-bottom));
+    --fw-floating-bottom-center: calc(
+      4rem + 16px + env(safe-area-inset-bottom)
+    );
   }
 }
 @media (prefers-reduced-motion: reduce) {

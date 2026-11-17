@@ -1,7 +1,12 @@
 /* Letter stack: sheets of paper stacked on one grid cell (the tallest sets the height). */
 .stack {
-  --stack-paper: linear-gradient(180deg, var(--letter-paper-hi, rgb(240, 240, 228)) 0, var(--letter-paper-hi, rgb(240, 240, 228)) 6%,
-    rgb(237, 238, 224) 15%, var(--letter-paper-lo, rgb(236, 237, 223)) 30%);
+  --stack-paper: linear-gradient(
+    180deg,
+    var(--letter-paper-hi, rgb(240, 240, 228)) 0,
+    var(--letter-paper-hi, rgb(240, 240, 228)) 6%,
+    rgb(237, 238, 224) 15%,
+    var(--letter-paper-lo, rgb(236, 237, 223)) 30%
+  );
   --stack-crease: rgba(110, 100, 70, 0.07);
   position: relative;
   width: min(662px, 100%);
@@ -24,7 +29,9 @@
 /* writing paper as recorded: a little lighter at the head of the sheet */
 .paper {
   background: var(--letter-paper, var(--stack-paper));
-  box-shadow: 0 0 0 0.8px rgba(70, 60, 30, 0.13), -1px 1px 8px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    0 0 0 0.8px rgba(70, 60, 30, 0.13),
+    -1px 1px 8px rgba(0, 0, 0, 0.05);
 }
 /* the three panels of the folded sheet share one sheet of paper; the creases stay faintly visible */
 .p0,
@@ -38,7 +45,9 @@
 }
 .p1 {
   background-position: 0 50%;
-  box-shadow: inset 0 1px 0 var(--stack-crease), inset 0 -1px 0 var(--stack-crease);
+  box-shadow:
+    inset 0 1px 0 var(--stack-crease),
+    inset 0 -1px 0 var(--stack-crease);
 }
 .p2 {
   background-position: 0 100%;
@@ -69,10 +78,22 @@
   transform-style: flat;
   perspective: none;
   background:
-    linear-gradient(transparent calc(100% / 3 - 1px), var(--stack-crease) 0, var(--stack-crease) calc(100% / 3), transparent 0),
-    linear-gradient(transparent calc(200% / 3 - 1px), var(--stack-crease) 0, var(--stack-crease) calc(200% / 3), transparent 0),
+    linear-gradient(
+      transparent calc(100% / 3 - 1px),
+      var(--stack-crease) 0,
+      var(--stack-crease) calc(100% / 3),
+      transparent 0
+    ),
+    linear-gradient(
+      transparent calc(200% / 3 - 1px),
+      var(--stack-crease) 0,
+      var(--stack-crease) calc(200% / 3),
+      transparent 0
+    ),
     var(--letter-paper, var(--stack-paper));
-  box-shadow: 0 0 0 0.8px rgba(70, 60, 30, 0.13), -1px 1px 8px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    0 0 0 0.8px rgba(70, 60, 30, 0.13),
+    -1px 1px 8px rgba(0, 0, 0, 0.05);
 }
 .flat .panel {
   display: none;
@@ -137,7 +158,9 @@
   color: inherit;
   cursor: pointer;
   border-radius: 50%;
-  transition: opacity 0.2s, transform 0.2s;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
 }
 .btn svg {
   display: block;

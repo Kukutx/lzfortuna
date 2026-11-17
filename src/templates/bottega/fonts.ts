@@ -10,6 +10,12 @@ import localFont from "next/font/local";
 // fallback. One family name for both halves would need a font-family
 // override, which Turbopack does not apply. (Font loader values must be
 // literals, so the ranges are written out.)
+//
+// The metric-matched fallbacks are written in host.css rather than generated:
+// next/font looks only for a local Arial, which Linux lacks, and there the
+// page fell back to an unmatched serif and shifted when the fonts arrived.
+// host.css keeps next/font's own overrides for these files and also accepts
+// Arial's metric twins (Liberation Sans, Arimo, Helvetica).
 
 export const sans = localFont({
   src: "./fonts/inter-latin.woff2",
@@ -17,7 +23,8 @@ export const sans = localFont({
   style: "normal",
   display: "swap",
   variable: "--bottega-sans",
-  fallback: ["system-ui", "sans-serif"],
+  adjustFontFallback: false,
+  fallback: ["Bottega Sans Fallback", "system-ui", "sans-serif"],
   declarations: [
     { prop: "unicode-range", value:
         "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
@@ -47,7 +54,8 @@ export const serif = localFont({
   ],
   display: "swap",
   variable: "--bottega-serif",
-  fallback: ["Georgia", "serif"],
+  adjustFontFallback: false,
+  fallback: ["Bottega Serif Fallback", "Georgia", "serif"],
   declarations: [
     { prop: "unicode-range", value:
         "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
