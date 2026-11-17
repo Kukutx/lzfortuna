@@ -1,8 +1,7 @@
 import type { NextConfig } from "next";
-import fs from "node:fs";
-import path from "node:path";
-import { nextRedirects, profileRedirects } from "./src/config/redirects.mjs";
+import { nextRedirects } from "./src/config/redirects.mjs";
 import { securityHeaders as sharedSecurityHeaders } from "./src/config/security-headers.mjs";
+import movedAddresses from "./src/portfolio/redirects.generated.json";
 import extensionNetwork from "./src/portfolio/security.generated.json";
 
 const isDevelopment = process.env.NODE_ENV !== "production";
@@ -24,15 +23,9 @@ const securityHeaders = sharedSecurityHeaders({
  * own configuration serves the headers. */
 const staticExport = process.env.FOLIO_HOSTING === "firebase";
 
-/** The profile's old addresses (deployment.redirects); a static export gets
- * them from its host's configuration instead. */
-const redirects = nextRedirects(
-  profileRedirects(
-    JSON.parse(
-      fs.readFileSync(path.join(process.cwd(), "portfolio.json"), "utf8"),
-    ),
-  ),
-);
+/** The profile's old addresses (deployment.redirects, written by content:build);
+ * a static export gets them from its host's configuration instead. */
+const redirects = nextRedirects(movedAddresses);
 
 const nextConfig: NextConfig = {
   // Route handlers that answer live (`route.server.ts`, such as the weather)
