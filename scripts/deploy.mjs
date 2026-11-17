@@ -15,6 +15,7 @@ import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { firebaseRedirects, profileRedirects } from "../src/config/redirects.mjs";
 import { securityHeaders } from "../src/config/security-headers.mjs";
 
 /** Kept in step with WEATHER_SERVICE in src/lib/weather-client.ts. */
@@ -58,7 +59,12 @@ export function target(profile, requested) {
     fail(`unknown provider "${provider}"; use one of ${PROVIDERS.join(", ")}.`);
   const settings = deployment.providers[provider];
   if (!settings) fail(`portfolio.json lists no settings for ${provider} under deployment.providers.`);
-  return { provider, settings, origin: settings.origin ?? profile.site.origin };
+  return {
+    provider,
+    settings,
+    origin: settings.origin ?? profile.site.origin,
+    redirects: profileRedirects(profile),
+  };
 }
 
 /** Wrangler configuration for the Next adapter, from the profile. */
@@ -87,8 +93,10 @@ function staticNetwork(network) {
   return { ...network, "connect-src": [...connect, WEATHER_SERVICE] };
 }
 
-/** Firebase Hosting serving the exported site with the shared headers. */
-export function firebaseConfig(site) {
+/** Firebase Hosting serving the exported site with the shared headers and
+ * the profile's redirects. Next's build output is content-hashed, so it is
+ * cached for good; everything else keeps Firebase's default. */
+export function firebaseConfig(site, redirects = []) {
   const network = JSON.parse(
     fs.readFileSync(path.join(root, "src/portfolio/security.generated.json"), "utf8"),
   );
@@ -98,7 +106,14 @@ export function firebaseConfig(site) {
       public: "out",
       cleanUrls: true,
       trailingSlash: false,
-      headers: [{ source: "**", headers: securityHeaders({ network: staticNetwork(network) }) }],
+      redirects: firebaseRedirects(redirects),
+      headers: [
+        { source: "**", headers: securityHeaders({ network: staticNetwork(network) }) },
+        {
+          source: "/_next/static/**",
+          headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+        },
+      ],
     },
   };
 }
@@ -124,7 +139,7 @@ const steps = {
     const project = settings.project ? ["--project", settings.project] : [];
     run("npx", ["--yes", "vercel", "deploy", "--prod", ...project], env);
   },
-  firebase({ settings, origin }, apply) {
+  firebase({ settings, origin, redirects }, apply) {
     // Firebase's free plan serves static files: the site is exported as such.
     const env = {
       NEXT_PUBLIC_SITE_ORIGIN: origin,
@@ -135,7 +150,7 @@ const steps = {
     const site = settings.site ?? settings.projectId;
     fs.writeFileSync(
       path.join(root, "firebase.generated.json"),
-      `${JSON.stringify(firebaseConfig(site), null, 2)}\n`,
+      `${JSON.stringify(firebaseConfig(site, redirects), null, 2)}\n`,
     );
     if (apply)
       run("npx", ["--yes", "firebase-tools", "deploy", "--only", "hosting", "--project", settings.projectId, "--config", "firebase.generated.json"], env);
