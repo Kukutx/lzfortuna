@@ -768,7 +768,11 @@
     radial-gradient(70% 55% at 0% 100%, #03228f 0%, rgba(3, 34, 143, 0) 100%),
     radial-gradient(40% 45% at 100% 0%, #1f86cf 0%, rgba(31, 134, 207, 0) 100%),
     radial-gradient(30% 30% at 0% 0%, #b07ca8 0%, rgba(176, 124, 168, 0) 100%),
-    radial-gradient(45% 40% at 100% 100%, #ec8f63 0%, rgba(236, 143, 99, 0) 100%),
+    radial-gradient(
+      45% 40% at 100% 100%,
+      #ec8f63 0%,
+      rgba(236, 143, 99, 0) 100%
+    ),
     linear-gradient(
       126deg,
       #b57ea3 0%,

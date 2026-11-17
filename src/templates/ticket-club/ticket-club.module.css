@@ -81,11 +81,21 @@
   line-height: normal;
   pointer-events: none;
 }
-.w400 { font-weight: 400; }
-.w500 { font-weight: 500; }
-.w600 { font-weight: 600; }
-.w700 { font-weight: 700; }
-.w800 { font-weight: 800; }
+.w400 {
+  font-weight: 400;
+}
+.w500 {
+  font-weight: 500;
+}
+.w600 {
+  font-weight: 600;
+}
+.w700 {
+  font-weight: 700;
+}
+.w800 {
+  font-weight: 800;
+}
 
 /* ---------- header ---------- */
 .edition {
@@ -100,7 +110,9 @@
   color: rgb(255, 194, 158);
   white-space: nowrap;
   cursor: pointer;
-  transition: border-color 0.25s ease, color 0.25s ease;
+  transition:
+    border-color 0.25s ease,
+    color 0.25s ease;
 }
 .edition svg {
   margin-right: 1px;
@@ -135,7 +147,8 @@
   width: 1500px;
   height: 807px;
   transform-origin: 0 0;
-  transform: translateY(max(0px, min(100vh, calc(var(--h) * 1.35)) - var(--h))) scale(var(--k));
+  transform: translateY(max(0px, min(100vh, calc(var(--h) * 1.35)) - var(--h)))
+    scale(var(--k));
   pointer-events: none;
 }
 .heroLayer {
@@ -338,7 +351,11 @@
   top: 0;
   width: 302.4px;
   background:
-    radial-gradient(150px 300px at 0 0, rgba(255, 255, 240, 0.045), transparent 100%),
+    radial-gradient(
+      150px 300px at 0 0,
+      rgba(255, 255, 240, 0.045),
+      transparent 100%
+    ),
     var(--card);
 }
 .stub {
@@ -417,7 +434,9 @@
   white-space: nowrap;
   cursor: pointer;
   pointer-events: auto;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 .againIcon {
   display: inline-block;
@@ -468,7 +487,9 @@
   border-radius: 10px;
   overflow: hidden;
   background: rgb(236, 224, 210);
-  box-shadow: 0 10px 22px rgba(60, 0, 0, 0.17), inset 0 0 0 0.5px rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 10px 22px rgba(60, 0, 0, 0.17),
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.5);
   pointer-events: none;
 }
 .panelHead {
@@ -521,7 +542,9 @@
   transform: translateX(-50%);
   background: rgb(46, 37, 28);
   border-radius: 8px;
-  box-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.06), 0 8px 18px rgba(60, 0, 0, 0.16);
+  box-shadow:
+    0 0 0 0.5px rgba(255, 255, 255, 0.06),
+    0 8px 18px rgba(60, 0, 0, 0.16);
   white-space: nowrap;
   color: rgb(234, 232, 214);
   pointer-events: none;
@@ -549,7 +572,11 @@
   /* the first ticket's centre in the middle of the screen, the line's top (y 84) at the top */
   .stage,
   .fx {
-    transform: translate(calc(50cqw - var(--c0) * var(--k) * 1px), calc(-84px * var(--k))) scale(var(--k));
+    transform: translate(
+        calc(50cqw - var(--c0) * var(--k) * 1px),
+        calc(-84px * var(--k))
+      )
+      scale(var(--k));
   }
   .deskOnly,
   .heroLayer {
@@ -720,7 +747,10 @@
   box-shadow: 0 0 0 1.5px currentColor;
 }
 @keyframes editIn {
-  from { opacity: 0; transform: translateY(2px); }
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
 }
 .phoneEdit {
   display: grid;
@@ -766,12 +796,13 @@
   }
 }
 
-
 /* ---------- the header of the other pages (the edition, writing, 404): the stage's header strip ---------- */
 .edHead {
   position: relative;
   z-index: 2;
-  height: calc(69.5px * var(--k)); /* the edition control's bottom (33.5 + 28) and 8 px */
+  height: calc(
+    69.5px * var(--k)
+  ); /* the edition control's bottom (33.5 + 28) and 8 px */
 }
 .edHeadStage {
   position: absolute;
@@ -880,10 +911,12 @@
   .page[data-opening] .openString {
     animation:
       tcLine 0.415s cubic-bezier(0.198, 0.815, 0.35, 0.956) 0.012833s both,
-      tcAppear 0.223333s cubic-bezier(0.4615, 0.961, 0.606, 0.781) -0.006167s both;
+      tcAppear 0.223333s cubic-bezier(0.4615, 0.961, 0.606, 0.781) -0.006167s
+        both;
   }
   .page[data-opening] .openHero {
-    animation: tcHero 0.623667s cubic-bezier(0.132, 1.146, 0.673, 0.973) 0.0135s both;
+    animation: tcHero 0.623667s cubic-bezier(0.132, 1.146, 0.673, 0.973) 0.0135s
+      both;
   }
   .page[data-opening] .openHint {
     animation: tcHint 0.416667s linear both;
@@ -891,7 +924,8 @@
   .page[data-opening] .openTicket {
     animation:
       tcDrop 1.192333s linear var(--base) both,
-      tcAppear 0.512333s cubic-bezier(0.208, 1.104, 0.634, 0.955) var(--fade) both;
+      tcAppear 0.512333s cubic-bezier(0.208, 1.104, 0.634, 0.955) var(--fade)
+        both;
   }
 }
 @keyframes tcLine {
@@ -919,37 +953,65 @@
   }
 }
 @keyframes tcHint {
-  0% { opacity: 0; }
-  4% { opacity: 0.12; }
-  12% { opacity: 0.3; }
-  20% { opacity: 0.5; }
-  28% { opacity: 0.63; }
-  36% { opacity: 0.74; }
-  44% { opacity: 0.82; }
-  52% { opacity: 0.89; }
-  60% { opacity: 0.93; }
-  68% { opacity: 0.97; }
-  76% { opacity: 0.98; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  4% {
+    opacity: 0.12;
+  }
+  12% {
+    opacity: 0.3;
+  }
+  20% {
+    opacity: 0.5;
+  }
+  28% {
+    opacity: 0.63;
+  }
+  36% {
+    opacity: 0.74;
+  }
+  44% {
+    opacity: 0.82;
+  }
+  52% {
+    opacity: 0.89;
+  }
+  60% {
+    opacity: 0.93;
+  }
+  68% {
+    opacity: 0.97;
+  }
+  76% {
+    opacity: 0.98;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 /* frames of a ticket's own entrance (Fi, 71.54 in all): held tilted until 7.8, the drop to 44.8, held to
    48.4, swing to 61.58, swing to rest */
 @keyframes tcDrop {
   0%,
   10.903% {
-    transform: translate(calc(var(--px) * 1px), calc((var(--py) - 333.7) * 1px)) rotate(calc((var(--a) + var(--a0)) * 1deg)) translate(-151px, 12px);
+    transform: translate(calc(var(--px) * 1px), calc((var(--py) - 333.7) * 1px))
+      rotate(calc((var(--a) + var(--a0)) * 1deg)) translate(-151px, 12px);
     animation-timing-function: cubic-bezier(0.245, 0.863, 0.256, 0.993);
   }
   62.622%,
   67.654% {
-    transform: translate(calc(var(--px) * 1px), calc((var(--py) + 7.57) * 1px)) rotate(calc((var(--a) + 2) * 1deg)) translate(-151px, 12px);
+    transform: translate(calc(var(--px) * 1px), calc((var(--py) + 7.57) * 1px))
+      rotate(calc((var(--a) + 2) * 1deg)) translate(-151px, 12px);
     animation-timing-function: cubic-bezier(0.179, 0.911, 0.35, 0.987);
   }
   86.077% {
-    transform: translate(calc(var(--px) * 1px), calc((var(--py) - 3.24) * 1px)) rotate(calc((var(--a) - 1) * 1deg)) translate(-151px, 12px);
+    transform: translate(calc(var(--px) * 1px), calc((var(--py) - 3.24) * 1px))
+      rotate(calc((var(--a) - 1) * 1deg)) translate(-151px, 12px);
     animation-timing-function: cubic-bezier(0.179, 0.911, 0.35, 0.987);
   }
   100% {
-    transform: translate(calc(var(--px) * 1px), calc(var(--py) * 1px)) rotate(calc(var(--a) * 1deg)) translate(-151px, 12px);
+    transform: translate(calc(var(--px) * 1px), calc(var(--py) * 1px))
+      rotate(calc(var(--a) * 1deg)) translate(-151px, 12px);
   }
 }

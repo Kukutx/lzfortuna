@@ -48,14 +48,26 @@
   cursor: grab;
   touch-action: pan-y;
   background:
-    radial-gradient(circle at 1px 1px, var(--weave) 0.75px, transparent 1.1px) 0 0 / 4px 4.12px,
+    radial-gradient(circle at 1px 1px, var(--weave) 0.75px, transparent 1.1px) 0
+      0 / 4px 4.12px,
     repeating-linear-gradient(90deg, var(--thread) 0 1px, transparent 1px 4px),
-    repeating-linear-gradient(0deg, var(--thread) 0 1px, transparent 1px 4.12px),
+    repeating-linear-gradient(
+      0deg,
+      var(--thread) 0 1px,
+      transparent 1px 4.12px
+    ),
     var(--linen);
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
   color: var(--muted, #7f7f7a);
-  font-family: var(--pocket-font, Menlo, "DejaVu Sans Mono", "Bitstream Vera Sans Mono", ui-monospace, monospace);
+  font-family: var(
+    --pocket-font,
+    Menlo,
+    "DejaVu Sans Mono",
+    "Bitstream Vera Sans Mono",
+    ui-monospace,
+    monospace
+  );
   user-select: none;
   -webkit-user-select: none;
 }
