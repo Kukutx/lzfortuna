@@ -5,6 +5,9 @@ import { resolvePublishedRoutes } from "@/portfolio/publication-policy.mjs";
 import { pluginPageLinks } from "@/portfolio/plugin-page-links.generated";
 import { templatePages } from "@/portfolio/template-pages.generated";
 
+/** Built once from the profile, so static hosts can serve it as a file. */
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getBlogIndexPosts();
   const tags = getBlogTags();

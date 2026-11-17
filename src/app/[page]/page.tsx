@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { exportableParams } from "@/lib/static-params.mjs";
 import { createRouteMetadata } from "@/config/seo";
 import { siteConfig } from "@/config/site";
 import { templateContext } from "@/core/template-context";
@@ -9,7 +10,10 @@ import { templatePages } from "@/portfolio/template-pages.generated";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return templatePages.map((page) => ({ page: page.path }));
+  return exportableParams(
+    templatePages.map((page) => ({ page: page.path })),
+    "page",
+  );
 }
 
 export async function generateMetadata({

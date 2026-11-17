@@ -35,6 +35,11 @@ const redirects = nextRedirects(
 );
 
 const nextConfig: NextConfig = {
+  // Route handlers that answer live (`route.server.ts`, such as the weather)
+  // exist only where a server runs; a static export leaves them out.
+  pageExtensions: staticExport
+    ? ["tsx", "ts", "jsx", "js"]
+    : ["tsx", "ts", "jsx", "js", "server.ts"],
   allowedDevOrigins: ["127.0.0.1"],
   reactStrictMode: true,
   poweredByHeader: false,

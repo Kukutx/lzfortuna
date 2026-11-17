@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { exportableParams } from "@/lib/static-params.mjs";
 import { createRouteMetadata } from "@/config/seo";
 import { siteConfig } from "@/config/site";
 import { PluginBoundary } from "@/core/plugin-boundary";
@@ -9,7 +10,10 @@ import { pluginPages } from "@/portfolio/plugin-pages.generated";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return pluginPages.map((page) => ({ tool: page.path }));
+  return exportableParams(
+    pluginPages.map((page) => ({ tool: page.path })),
+    "tool",
+  );
 }
 
 export async function generateMetadata({
