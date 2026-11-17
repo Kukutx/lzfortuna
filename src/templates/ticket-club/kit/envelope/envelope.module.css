@@ -45,12 +45,20 @@
 .face {
   background:
     var(--env-grain) 0 0 / 240px 240px,
-    linear-gradient(168deg, var(--envelope-paper-hi, rgb(238, 235.5, 223)), var(--envelope-paper-lo, rgb(224, 221, 200)));
+    linear-gradient(
+      168deg,
+      var(--envelope-paper-hi, rgb(238, 235.5, 223)),
+      var(--envelope-paper-lo, rgb(224, 221, 200))
+    );
 }
 /* the back: its inside shows above the front once the strip is gone; it casts the envelope's shadow */
 .back {
-  background: var(--env-grain) 0 0 / 240px 240px, var(--envelope-inside, rgb(201, 199, 178));
-  box-shadow: 0 14px 32px -8px rgba(60, 50, 30, 0.32), 0 1.5px 1px rgba(60, 50, 30, 0.2);
+  background:
+    var(--env-grain) 0 0 / 240px 240px,
+    var(--envelope-inside, rgb(201, 199, 178));
+  box-shadow:
+    0 14px 32px -8px rgba(60, 50, 30, 0.32),
+    0 1.5px 1px rgba(60, 50, 30, 0.2);
 }
 .front {
   cursor: pointer;
@@ -144,15 +152,35 @@
 .attached {
   background:
     var(--env-grain) 0 0 / 240px 240px,
-    linear-gradient(to bottom, rgba(120, 108, 72, 0.22), rgba(120, 108, 72, 0) 1.2px),
-    linear-gradient(to bottom, rgb(241, 239, 226) 2px, rgb(237, 236, 223) 8px, rgb(236, 234, 219) 12px, rgb(234, 231, 215) 16px,
-      rgb(232, 229, 212) 20px, rgb(232, 229, 212) 31px, rgb(227, 224, 209) 35.5px);
+    linear-gradient(
+      to bottom,
+      rgba(120, 108, 72, 0.22),
+      rgba(120, 108, 72, 0) 1.2px
+    ),
+    linear-gradient(
+      to bottom,
+      rgb(241, 239, 226) 2px,
+      rgb(237, 236, 223) 8px,
+      rgb(236, 234, 219) 12px,
+      rgb(234, 231, 215) 16px,
+      rgb(232, 229, 212) 20px,
+      rgb(232, 229, 212) 31px,
+      rgb(227, 224, 209) 35.5px
+    );
 }
 /* the torn part shows the strip's underside */
 .under {
   background:
     var(--env-grain) 0 0 / 240px 240px,
-    linear-gradient(to top, rgb(237, 236, 221) 1px, rgb(236, 234, 219) 8px, rgb(229, 226, 208) 15px, rgb(224, 221, 202) 22px, rgb(224, 221, 202) 33px, rgb(229, 225, 208) 36px);
+    linear-gradient(
+      to top,
+      rgb(237, 236, 221) 1px,
+      rgb(236, 234, 219) 8px,
+      rgb(229, 226, 208) 15px,
+      rgb(224, 221, 202) 22px,
+      rgb(224, 221, 202) 33px,
+      rgb(229, 225, 208) 36px
+    );
 }
 .armShadow {
   position: absolute;
@@ -160,7 +188,11 @@
   right: 0;
   top: 8px;
   height: 10px;
-  background: linear-gradient(to top, rgba(70, 58, 30, 0.2), rgba(70, 58, 30, 0));
+  background: linear-gradient(
+    to top,
+    rgba(70, 58, 30, 0.2),
+    rgba(70, 58, 30, 0)
+  );
   filter: blur(2px);
 }
 .arm {
@@ -179,8 +211,16 @@
   border-radius: 0 16px 16px 0 / 0 26px 26px 0;
   background:
     var(--env-grain) 0 0 / 240px 240px,
-    linear-gradient(90deg, rgb(190, 186, 170) 0, rgb(222, 218, 202) 3px, rgb(236, 233, 216) 9px, rgb(247, 245, 232) 16px,
-      rgb(248, 246, 234) 20px, rgb(236, 233, 219) 25px, rgb(226, 223, 209) 30px);
+    linear-gradient(
+      90deg,
+      rgb(190, 186, 170) 0,
+      rgb(222, 218, 202) 3px,
+      rgb(236, 233, 216) 9px,
+      rgb(247, 245, 232) 16px,
+      rgb(248, 246, 234) 20px,
+      rgb(236, 233, 219) 25px,
+      rgb(226, 223, 209) 30px
+    );
   box-shadow: 1.5px 1px 2px rgba(60, 50, 30, 0.2);
   pointer-events: none;
 }
@@ -214,7 +254,9 @@
   place-items: center;
   border-radius: 6px;
   background: rgb(237, 234, 216);
-  box-shadow: 0 0 0 1px rgba(120, 110, 80, 0.12), 0 1px 3px rgba(0, 0, 0, 0.12);
+  box-shadow:
+    0 0 0 1px rgba(120, 110, 80, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.12);
   font-family: var(--font-hand, "Caveat Brush", cursive);
   font-size: 23px;
   line-height: 1;

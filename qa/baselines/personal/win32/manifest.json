@@ -1,0 +1,364 @@
+{
+  "version": 1,
+  "browserVersion": "151.0.7922.34",
+  "platform": "win32",
+  "profileName": "personal",
+  "files": {
+    "1440-contact.png": "0a1622d1d06792cd02b20f1fe8646c5e05bea09f9367e6ddcbe98f6a5900860a",
+    "1440-help.png": "9deda76bf4aa82c09cd9bd58730d28b6dc51ce161a03f20a8ad242a04a399879",
+    "1440-hero.png": "6e2ccf7219558ffb3414e62e78e97b69bebc0a644b4662a324804a1a8fd5d462",
+    "1440-page-catalog.png": "146c282d9bbadd492211840cddc1451279ef7bcc1e96157c5305e11e4be09711",
+    "1440-page-services.png": "e5352784b75611a873f62e75ac14a7c37a3bfc14ad36e9b4863a177f9a0a6a3b",
+    "1440-services.png": "cc7f66b98e1da427ecc80360d391a34183e7c4e1a1637ed94f8d7537d2b4800c",
+    "1440-stores.png": "b176c568d49f435357caaebaf5bbdcdabbca496cef98761b104a3839ec5f4b32",
+    "360-contact.png": "2b910214f20605f7f632435c08330fd45ee8738cd338f0638cbf92d2bdc419d6",
+    "360-help.png": "6061bc382b7c7b7aff6e28c193dc9297d0715520f9ed3c87ee9de8cb04726d5e",
+    "360-hero.png": "bdee3f88b39350e139a602bced304fff5370588b6fead32067de347a0844020f",
+    "360-page-catalog.png": "7166f225e440518a853660966a37a6c3e2411fea1166f502623b909ecb19ca1c",
+    "360-page-services.png": "44e69f038c3dbadb3157b0efad46d83fa82860fb380336bf013c88543c6f3ac0",
+    "360-services.png": "0e6764e68150b26d203819f88c1362081c1820de9d075515c23970bd64be2fbc",
+    "360-stores.png": "80bab222d99ba1e191d152a3121e6b989923bd0eb6d849f53f7a3c0669cd2aa3",
+    "390-contact.png": "a7eb07c339d2b8eda9d5754cb5426de15110d6129d9e5bd8a4c4b01d5044fa66",
+    "390-help.png": "1ec4c44ebd9b34dacc358182e4cc84d51dbc7cf13a252f49d860ed7fb3b12ee8",
+    "390-hero.png": "f69c5dd9f563088ddb256e3a1fbbfee643a4e952293152556094356fd301e97c",
+    "390-page-catalog.png": "f33b9ba4f669f4f500fa0e73add7c1bde37d531bafab6d2981bc18d6522c3317",
+    "390-page-services.png": "cc1a0b5aa0976ab2dae6c57595b8bfce5c8aa13cadae8eb5cb30d16d0a4486c2",
+    "390-services.png": "70c19a7ddddc479d5ea9d05910ef1022380d6017904612487618bda115f9e110",
+    "390-stores.png": "ad6bfbf323b5f2ae8cc8469fc2fb638d41ee90ab0dbd1c91a60349eca360d979",
+    "767-contact.png": "e797e5965f9c7151d198c8f384d1300ebaf64b48cfa8ae1996911672819d89ac",
+    "767-help.png": "416d3e34736a1d68cce27265caf42e6b644b5a3b840ce979a6dc45e367528439",
+    "767-hero.png": "7da9700d1390ddae6045278e3b512cc5dd6697fd9ffd09bb17297645a31a2426",
+    "767-page-catalog.png": "37f966a01103a0c7958e6c731b7c45348784b27041eb480afb87c8a972b24bac",
+    "767-page-services.png": "92d5c00cf0b4313f165a076e7e06412d4d127a95a922be83a34287d01793197e",
+    "767-services.png": "bef1c16cba37259c4a5cb729f0f7890b7fb3ea6272a1a8e82cd82b3e007bfd22",
+    "767-stores.png": "733a418336d81d8efe359859329213ca037787819e2ed3ffc9ae7c24c36d5b56",
+    "768-contact.png": "58c6b4d414f67b1f6b49257fdec26a52904962148b1588a07de1f140f9e510c8",
+    "768-help.png": "02cc60099c770acc330ec7e3b2c2f04c2f01b4b0dda907068a818a83ee1d6e50",
+    "768-hero.png": "aef452c01769519741d846cbdc5695dfd9f6e7b7ce2da2ed88c7dc6a57e69c3a",
+    "768-page-catalog.png": "111b2cf7d60e92bf50bccf55e12d992f913d4818a3bf006c6250b4309844565d",
+    "768-page-services.png": "cea3af98048f149294d817b57a36051757931e3372e5d28f3332b7ea35c076ce",
+    "768-services.png": "5abdabc26db2678d02f9d2024aa3b8ebc67cbb7d46a54e29ab1a542d2f7c25d1",
+    "768-stores.png": "51bf6cbc590826bcf8e38edb9163b94a1bf8a86059b5dfeefa831731b778117f",
+    "820-contact.png": "50723814629ce785edbf01c99d90ca54e10013945077fa423aa4682a88cd6f18",
+    "820-help.png": "bca181c165216b414bde0a47240bab2f3de1701dddce1c8bb1c12a2219432e49",
+    "820-hero.png": "76c1487952786817060b100285831475fe2d5bd36ecbdcf8c416f40ed5b17962",
+    "820-page-catalog.png": "28f6867d510b32402d398e996cac88299a6d9bbb94ff6eb93f564323a3fc5ec0",
+    "820-page-services.png": "916c323401318261cef47a9ed1cb7cb35f190b111047d8c07b64f1ca656141a4",
+    "820-services.png": "f35184c75a016adbe1a2d5cc069a1a5d2b13d5605c9fded42a913cae04b9cee4",
+    "820-stores.png": "99c5d78031c29de1c30c2e4821c1ec3d82e7c47fc384363313f7b64cc81614e2"
+  },
+  "geometry": [
+    {
+      "width": 360,
+      "geometry": {
+        "sections": {
+          "help": {
+            "x": 0,
+            "y": 730.140625,
+            "width": 360,
+            "height": 926.96875
+          },
+          "services": {
+            "x": 0,
+            "y": 1657.109375,
+            "width": 360,
+            "height": 1267.9375
+          },
+          "stores": {
+            "x": 0,
+            "y": 2925.046875,
+            "width": 360,
+            "height": 2576.328125
+          },
+          "contact": {
+            "x": 0,
+            "y": 5501.375,
+            "width": 360,
+            "height": 687.96875
+          }
+        },
+        "work": [],
+        "photos": [],
+        "overflow": false,
+        "scrollbarWidth": 0,
+        "broken": [],
+        "pages": {
+          "catalog": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 4319
+          },
+          "services": {
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 6425
+          }
+        }
+      },
+      "lightbox": null,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "geometry": {
+        "sections": {
+          "help": {
+            "x": 0,
+            "y": 707.390625,
+            "width": 390,
+            "height": 896.96875
+          },
+          "services": {
+            "x": 0,
+            "y": 1604.359375,
+            "width": 390,
+            "height": 1280.9375
+          },
+          "stores": {
+            "x": 0,
+            "y": 2885.296875,
+            "width": 390,
+            "height": 2529.828125
+          },
+          "contact": {
+            "x": 0,
+            "y": 5415.125,
+            "width": 390,
+            "height": 639.96875
+          }
+        },
+        "work": [],
+        "photos": [],
+        "overflow": false,
+        "scrollbarWidth": 0,
+        "broken": [],
+        "pages": {
+          "catalog": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 4060
+          },
+          "services": {
+            "x": 0,
+            "y": 0,
+            "width": 390,
+            "height": 6259
+          }
+        }
+      },
+      "lightbox": null,
+      "errors": []
+    },
+    {
+      "width": 767,
+      "geometry": {
+        "sections": {
+          "help": {
+            "x": 0,
+            "y": 599.609375,
+            "width": 767,
+            "height": 740.984375
+          },
+          "services": {
+            "x": 63.5,
+            "y": 1340.59375,
+            "width": 640,
+            "height": 1559.953125
+          },
+          "stores": {
+            "x": 63.5,
+            "y": 2900.546875,
+            "width": 640,
+            "height": 2438.359375
+          },
+          "contact": {
+            "x": 0,
+            "y": 5338.90625,
+            "width": 767,
+            "height": 507.96875
+          }
+        },
+        "work": [],
+        "photos": [],
+        "overflow": false,
+        "scrollbarWidth": 0,
+        "broken": [],
+        "pages": {
+          "catalog": {
+            "x": 0,
+            "y": 0,
+            "width": 767,
+            "height": 2868
+          },
+          "services": {
+            "x": 0,
+            "y": 0,
+            "width": 767,
+            "height": 5439
+          }
+        }
+      },
+      "lightbox": null,
+      "errors": []
+    },
+    {
+      "width": 768,
+      "geometry": {
+        "sections": {
+          "help": {
+            "x": 0,
+            "y": 679.703125,
+            "width": 768,
+            "height": 821
+          },
+          "services": {
+            "x": 0,
+            "y": 1500.703125,
+            "width": 768,
+            "height": 821.46875
+          },
+          "stores": {
+            "x": 0,
+            "y": 2322.171875,
+            "width": 768,
+            "height": 2624.375
+          },
+          "contact": {
+            "x": 0,
+            "y": 4946.546875,
+            "width": 768,
+            "height": 572
+          }
+        },
+        "work": [],
+        "photos": [],
+        "overflow": false,
+        "scrollbarWidth": 0,
+        "broken": [],
+        "pages": {
+          "catalog": {
+            "x": 0,
+            "y": 0,
+            "width": 768,
+            "height": 2668
+          },
+          "services": {
+            "x": 0,
+            "y": 0,
+            "width": 768,
+            "height": 5185
+          }
+        }
+      },
+      "lightbox": null,
+      "errors": []
+    },
+    {
+      "width": 820,
+      "geometry": {
+        "sections": {
+          "help": {
+            "x": 0,
+            "y": 684.640625,
+            "width": 820,
+            "height": 821
+          },
+          "services": {
+            "x": 26,
+            "y": 1505.640625,
+            "width": 768,
+            "height": 821.46875
+          },
+          "stores": {
+            "x": 26,
+            "y": 2327.109375,
+            "width": 768,
+            "height": 2624.375
+          },
+          "contact": {
+            "x": 0,
+            "y": 4951.484375,
+            "width": 820,
+            "height": 572
+          }
+        },
+        "work": [],
+        "photos": [],
+        "overflow": false,
+        "scrollbarWidth": 0,
+        "broken": [],
+        "pages": {
+          "catalog": {
+            "x": 0,
+            "y": 0,
+            "width": 820,
+            "height": 2734
+          },
+          "services": {
+            "x": 0,
+            "y": 0,
+            "width": 820,
+            "height": 5189
+          }
+        }
+      },
+      "lightbox": null,
+      "errors": []
+    },
+    {
+      "width": 1440,
+      "geometry": {
+        "sections": {
+          "help": {
+            "x": 0,
+            "y": 720.75,
+            "width": 1440,
+            "height": 505
+          },
+          "services": {
+            "x": 80,
+            "y": 1225.75,
+            "width": 1280,
+            "height": 917.484375
+          },
+          "stores": {
+            "x": 80,
+            "y": 2143.234375,
+            "width": 1280,
+            "height": 1419.6875
+          },
+          "contact": {
+            "x": 0,
+            "y": 3562.921875,
+            "width": 1440,
+            "height": 572
+          }
+        },
+        "work": [],
+        "photos": [],
+        "overflow": false,
+        "scrollbarWidth": 0,
+        "broken": [],
+        "pages": {
+          "catalog": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 2334
+          },
+          "services": {
+            "x": 0,
+            "y": 0,
+            "width": 1440,
+            "height": 3958
+          }
+        }
+      },
+      "lightbox": null,
+      "errors": []
+    }
+  ]
+}
