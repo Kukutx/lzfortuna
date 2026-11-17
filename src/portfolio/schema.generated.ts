@@ -470,6 +470,23 @@ export type PortfolioConfig = {
         origin?: HostingOrigin;
       };
     };
+    /**
+     * Old addresses that move permanently to new ones on every host, so links and search results that still point at them keep working.
+     */
+    redirects?: {
+      /**
+       * The old path, without a trailing slash; not the home page.
+       */
+      from: string;
+      /**
+       * Where it now lives on this site; may end in a #section.
+       */
+      to: string;
+      /**
+       * Also move every address under `from` to `to`.
+       */
+      subpaths?: boolean;
+    }[];
   };
   plugins?: {
     [k: string]: {

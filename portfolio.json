@@ -486,6 +486,63 @@
         "site": "lzfortuna",
         "origin": "https://lzfortuna.web.app"
       }
-    }
+    },
+    "redirects": [
+      {
+        "from": "/zh/services/sewing",
+        "to": "/sartoria",
+        "subpaths": true
+      },
+      {
+        "from": "/zh/services/3d",
+        "to": "/#services",
+        "subpaths": true
+      },
+      {
+        "from": "/en/services/sewing",
+        "to": "/sartoria",
+        "subpaths": true
+      },
+      {
+        "from": "/en/services/3d",
+        "to": "/#services",
+        "subpaths": true
+      },
+      {
+        "from": "/it/services/sewing",
+        "to": "/sartoria",
+        "subpaths": true
+      },
+      {
+        "from": "/it/services/3d",
+        "to": "/#services",
+        "subpaths": true
+      },
+      {
+        "from": "/services/sewing",
+        "to": "/sartoria",
+        "subpaths": true
+      },
+      {
+        "from": "/services/3d",
+        "to": "/#services",
+        "subpaths": true
+      },
+      {
+        "from": "/zh",
+        "to": "/",
+        "subpaths": true
+      },
+      {
+        "from": "/en",
+        "to": "/",
+        "subpaths": true
+      },
+      {
+        "from": "/it",
+        "to": "/",
+        "subpaths": true
+      }
+    ]
   }
 }
