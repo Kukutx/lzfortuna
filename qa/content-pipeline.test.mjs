@@ -365,8 +365,18 @@ test("the site origin and contact email are canonical before they are published"
     () => validatePublicationLinks(config),
     /site\.contact\.email is not an email address/,
   );
+  // Leaving the contact out adds no error of its own, whatever else the
+  // active profile links to.
+  const outcome = (profile) => {
+    try {
+      validatePublicationLinks(profile);
+      return null;
+    } catch (error) {
+      return error.message;
+    }
+  };
   delete config.site.contact;
-  validatePublicationLinks(config);
+  assert.equal(outcome(config), outcome(structuredClone(personal)));
 });
 
 test("a hero brand links only to an enabled project", () => {
