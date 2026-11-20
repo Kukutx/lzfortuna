@@ -787,11 +787,17 @@ type Body = {
 };
 
 type Grab = {
+  /** 0 for the front card; a card behind swings on the hook as it is held. */
+  card: number;
   local: THREE.Vector3;
   rotation: THREE.Quaternion;
   reach: number;
   from: THREE.Vector3;
   target: THREE.Vector3;
+  /** A card behind: its hole relative to the hook, in the front card's frame. */
+  pivot: THREE.Vector3;
+  /** A card behind: the held point relative to its hole, in its own frame. */
+  arm: THREE.Vector3;
 };
 
 /** A card behind the front one: an angle in the front card's plane. */
@@ -947,8 +953,8 @@ const solveSegment = (sim: Simulation, i: number, h: number, physics: Physics) =
   else b.addScaledVector(normal, -lambda * wb);
 };
 
-const solvePin = (body: Body, grab: Grab, target: THREE.Vector3) => {
-  const r = scratch.g.copy(grab.local).applyQuaternion(body.quaternion);
+const solvePin = (body: Body, local: THREE.Vector3, target: THREE.Vector3) => {
+  const r = scratch.g.copy(local).applyQuaternion(body.quaternion);
   const delta = scratch.a.copy(target).sub(body.position).sub(r);
   const distance = delta.length();
   if (distance < 1e-9) return;
@@ -956,6 +962,39 @@ const solvePin = (body: Body, grab: Grab, target: THREE.Vector3) => {
   const lambda = distance / bodyWeight(body, r, normal);
   pushBody(body, r, normal.multiplyScalar(lambda));
 };
+
+const held = {
+  pivot: new THREE.Vector3(),
+  reach: new THREE.Vector3(),
+  hook: new THREE.Vector3(),
+  q: new THREE.Quaternion(),
+};
+
+/** Where a held card behind hangs from, in the world. */
+const heldPivot = (body: Body, grab: Grab) =>
+  held.pivot.copy(body.hang).add(grab.pivot).applyQuaternion(body.quaternion).add(body.position);
+
+/**
+ * A card behind is held like a pendulum by its edge: it turns on the hook
+ * towards the hand (swingCards), and once the hand is further from the hook
+ * than the held point, it pulls the hook, and the whole lanyard, after it.
+ */
+const pullHook = (body: Body, grab: Grab, target: THREE.Vector3) => {
+  const pivot = heldPivot(body, grab);
+  const reach = held.reach.subVectors(target, pivot);
+  const distance = reach.length();
+  const radius = grab.arm.length();
+  if (distance <= radius || distance < 1e-9) return;
+  // Move the hole to within the held point's reach of the hand.
+  const hook = held.hook
+    .copy(target)
+    .addScaledVector(reach, -radius / distance)
+    .sub(held.reach.copy(grab.pivot).applyQuaternion(body.quaternion));
+  solvePin(body, body.hang, hook);
+};
+
+/** How quickly a held card behind turns to the hand (seconds). */
+const HOLD_FOLLOW = 0.016;
 
 const placeHanging = (
   sim: Simulation,
@@ -1044,7 +1083,8 @@ const stepSimulation = (
     body.previous.copy(body.position);
     body.previousQuaternion.copy(body.quaternion);
     const q = body.quaternion;
-    if (grab) {
+    // Holding the front card keeps it turned as it was taken.
+    if (grab && grab.card === 0) {
       const turn = scratch.q.copy(grab.rotation).multiply(scratch.r.copy(q).invert());
       if (turn.w < 0) turn.set(-turn.x, -turn.y, -turn.z, -turn.w);
       const torque = scratch.a.set(turn.x, turn.y, turn.z).multiplyScalar(2 * physics.grip);
@@ -1062,7 +1102,7 @@ const stepSimulation = (
       sim.twist += turned;
       sim.twistRaw = raw;
     }
-    if (!grab) {
+    if (!grab || grab.card > 0) {
       const spin = body.angular.dot(up);
       body.angular.addScaledVector(up, (physics.twist * (sim.turn - sim.twist) - physics.twistDamping * spin) * h);
     }
@@ -1076,7 +1116,8 @@ const stepSimulation = (
     if (grab) pin.lerpVectors(grab.from, grab.target, (s + 1) / steps);
     for (let iteration = 0; iteration < ITERATIONS; iteration++) {
       for (let i = 0; i < JOINTS; i++) solveSegment(sim, i, h, physics);
-      if (grab) solvePin(body, grab, pin);
+      if (grab?.card === 0) solvePin(body, grab.local, pin);
+      else if (grab) pullHook(body, grab, pin);
     }
 
     for (let i = 1; i < JOINTS; i++) {
@@ -1102,7 +1143,7 @@ const stepSimulation = (
     nodes[JOINTS].copy(body.hang).applyQuaternion(body.quaternion).add(body.position);
     for (let i = 0; i < JOINTS; i++) sim.lengths[i] = nodes[i].distanceTo(nodes[i + 1]);
 
-    if (sim.swings.length) swingCards(sim, h, physics, layout, angularDrag);
+    if (sim.swings.length) swingCards(sim, h, physics, layout, angularDrag, pin);
   }
 
   if (grab) grab.from.copy(grab.target);
@@ -1127,8 +1168,9 @@ const swingCards = (
   physics: Physics,
   layout: Layout,
   angularDrag: number,
+  pin: THREE.Vector3,
 ) => {
-  const { body, hook } = sim;
+  const { body, hook, grab } = sim;
   const follow = 1 - Math.exp(-h / HOOK_SMOOTHING);
   // Velocity of the hook point; its change is the acceleration it imparts.
   const r = scratch.a.copy(body.hang).applyQuaternion(body.quaternion);
@@ -1147,13 +1189,26 @@ const swingCards = (
     .applyQuaternion(scratch.r.copy(body.quaternion).invert());
   const d = layout.hangY;
   const inertia = d * d + (layout.width * layout.width + layout.height * layout.height) / 12;
+  const holding = grab && grab.card > 0 ? sim.swings[grab.card - 1] : null;
   for (const swing of sim.swings) {
+    if (swing === holding) continue;
     const lean = swing.angle - CARD_LEAN;
     const torque = d * (Math.sin(lean) * felt.y + Math.cos(lean) * felt.x);
     swing.spin += (torque / inertia - hook.spinRate) * h;
     swing.spin *= angularDrag;
     swing.angle = clamp(swing.angle + swing.spin * h, -Math.PI / 2, Math.PI / 2);
   }
+  if (!holding || !grab) return;
+  // The held card turns on the hook so the held point heads for the hand;
+  // its turning rate carries on as a swing once it is let go.
+  const toward = held.reach
+    .subVectors(pin, heldPivot(body, grab))
+    .applyQuaternion(held.q.copy(body.quaternion).invert());
+  let turn = Math.atan2(toward.y, toward.x) - Math.atan2(grab.arm.y, grab.arm.x) - holding.angle;
+  turn -= Math.round(turn / (Math.PI * 2)) * Math.PI * 2;
+  const next = clamp(holding.angle + turn * (1 - Math.exp(-h / HOLD_FOLLOW)), -Math.PI / 2, Math.PI / 2);
+  holding.spin = (next - holding.angle) / h;
+  holding.angle = next;
 };
 
 const settingsPhysics = (s: LanyardSettings, reducedMotion: boolean): Physics => {
@@ -1822,14 +1877,17 @@ export function mountLanyard(
     raycaster.setFromCamera(pointer, camera);
   };
 
+  /** The nearest card under the pointer, and which one it is. */
   const pickCard = () => {
     const meshes: THREE.Object3D[] = [];
     for (const card of cards) {
       card.group.updateMatrixWorld();
       meshes.push(card.body, card.front, card.back);
     }
-    const hits = raycaster.intersectObjects(meshes, false);
-    return hits[0] || null;
+    const hit = raycaster.intersectObjects(meshes, false)[0];
+    if (!hit) return null;
+    const index = cards.findIndex((card) => card.group === hit.object.parent);
+    return { hit, index: Math.max(0, index) };
   };
 
   const setCursor = (value: string) => {
@@ -1852,15 +1910,26 @@ export function mountLanyard(
   const onPointerDown = (event: PointerEvent) => {
     if (event.button > 0) return;
     toPointer(event);
-    const hit = pickCard();
-    miss = hit ? null : { x: event.clientX, y: event.clientY };
-    if (!read().interactive || !hit) return;
+    const picked = pickCard();
+    miss = picked ? null : { x: event.clientX, y: event.clientY };
+    if (!read().interactive || !picked) return;
+    const { hit, index } = picked;
+    const body = sim.body;
+    // A card behind is held by the point taken, measured from its hole.
+    const arm = new THREE.Vector3();
+    if (index > 0)
+      cards[index].group
+        .worldToLocal(arm.copy(hit.point))
+        .sub(scratch.a.set(0, layout.hangY, layout.hangZ));
     sim.grab = {
-      local: hit.point.clone().sub(sim.body.position).applyQuaternion(sim.body.quaternion.clone().invert()),
-      rotation: sim.body.quaternion.clone(),
+      card: index,
+      local: hit.point.clone().sub(body.position).applyQuaternion(body.quaternion.clone().invert()),
+      rotation: body.quaternion.clone(),
       reach: hit.distance,
       from: hit.point.clone(),
       target: hit.point.clone(),
+      pivot: new THREE.Vector3(CARD_SHIFT.x * index, CARD_SHIFT.y * index, -depthOf(index)),
+      arm,
     };
     press = { x: event.clientX, y: event.clientY, time: performance.now(), point: hit.point.clone() };
     canvas.setPointerCapture?.(event.pointerId);
