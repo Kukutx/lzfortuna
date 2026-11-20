@@ -485,8 +485,7 @@ on dark sections. It runs a 30 fps canvas only while visible, holds still under
 reduced motion, and fades out with the other controls while a phone reader
 scrolls down. The character is the Ink Bot from the replicas kit.
 
-The launcher keeps the same place and size on every page. A template that draws
-the same ink drop as decoration (Pond) hides its own while the launcher is on.
+The launcher keeps the same place and size on every page.
 
 ## Work badge
 
@@ -602,6 +601,14 @@ for example `[{ "each": "tracks.*", "audio": "src", "image": "cover" }]`: for ea
 selected item that names a published local audio file in `audio` and nothing in
 `image`, the content build publishes the embedded picture and names it there.
 The component receives the completed options; the author's profile is not changed.
+
+Optional `budget` states what a slot plugin adds to every page it appears on,
+in gzip bytes: `{ "jsGzipBytes": 9000, "cssGzipBytes": 2000 }`. The page
+bundle budget (`npm run qa:bundle`, 260 KB of JS and 30 KB of CSS for the
+template and core) grows by the budget of each plugin the profile enables, and
+`qa/plugin-budget.test.mjs` bundles the plugin's entry on its own and fails
+when it outgrows its budget. Code the plugin imports dynamically (loaded on
+use) does not count. A plugin in a site-wide slot should declare one.
 
 Keep styles in CSS Modules and consume the `--fw-*` tokens documented in
 [TEMPLATES.md](TEMPLATES.md). Do not import template components, install a scroller,
